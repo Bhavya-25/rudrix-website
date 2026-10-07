@@ -1,5 +1,5 @@
 'use client';
-import { motion, useTransform } from 'framer-motion';
+import { m as motion, useTransform } from 'framer-motion';
 import { hero } from '@/data/site';
 
 const ease = [0.22, 1, 0.36, 1];
@@ -54,7 +54,8 @@ export default function RotatingImageRing({ scroll, reduce }) {
                       aria-hidden={dup || undefined}
                       width={500}
                       height={600}
-                      loading="eager"
+                      loading="lazy"
+                      decoding="async"
                       draggable={false}
                       className="h-full w-full object-cover"
                     />

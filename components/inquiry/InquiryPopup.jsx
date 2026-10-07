@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
 import { X, ShieldCheck, Rocket, Users } from 'lucide-react';
 import ProjectForm from './ProjectForm';
 import { inquiry } from '@/data/inquiry';

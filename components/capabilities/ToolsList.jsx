@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { toolCatalog } from '@/data/capabilities';
 
 const ease = [0.22, 1, 0.36, 1];

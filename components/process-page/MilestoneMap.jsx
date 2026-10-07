@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useState } from 'react';
-import { AnimatePresence, motion, useInView, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion, useInView, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Check, Plus } from 'lucide-react';
 import { milestones as m } from '@/data/ourProcess';
 import MilestoneVisual from './MilestoneVisuals';

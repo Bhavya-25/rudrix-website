@@ -1,6 +1,6 @@
 'use client';
 import { useId, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import RollCta from './RollCta';
 import { standards } from '@/data/about';
 

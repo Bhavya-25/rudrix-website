@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 // Small line illustrations, one per milestone. Strokes draw in when mounted (skipped for reduced motion).
 const O = '#ff5a1f';

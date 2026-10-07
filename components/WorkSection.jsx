@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion, useScroll } from 'framer-motion';
+import { m as motion, useReducedMotion, useScroll } from 'framer-motion';
 import WorkCard from './work/WorkCard';
 import { work, selectedProjects } from '@/data/work';
 

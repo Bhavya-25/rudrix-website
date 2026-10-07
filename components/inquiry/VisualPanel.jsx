@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { Users, ShieldCheck, Rocket, MessageSquareText, MapPin, Code2, FileText, LifeBuoy } from 'lucide-react';
 import Marquee from './Marquee';
 import { inquiry } from '@/data/inquiry';

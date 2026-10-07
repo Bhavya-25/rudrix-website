@@ -1,6 +1,7 @@
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import JsonLd from '@/components/JsonLd';
+import MotionProvider from '@/components/MotionProvider';
 
 const sans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -32,7 +33,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={sans.variable}>
       <body>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
         <JsonLd data={{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Rudrix', url: siteUrl }} />
         <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Organization', name: 'Rudrix', url: siteUrl, email: 'hello@rudrix.com', description: 'Software development agency building custom software, web applications and digital products.' }} />
       </body>

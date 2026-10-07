@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { ChevronRight, TriangleAlert, CircleCheck } from 'lucide-react';
 
 const ease = [0.22, 1, 0.36, 1];

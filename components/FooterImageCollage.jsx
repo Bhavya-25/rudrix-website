@@ -1,5 +1,5 @@
 'use client';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import PosterCard from './PosterCard';
 import { footer } from '@/data/footer';
 

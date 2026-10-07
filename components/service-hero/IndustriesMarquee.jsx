@@ -1,5 +1,5 @@
 'use client';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import { customSoftwareIndustries as master } from '@/data/services';
 
 const ease = [0.22, 1, 0.36, 1];

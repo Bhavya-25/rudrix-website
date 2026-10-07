@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import Frame from './Frame';
 import useReveal from './useReveal';
 

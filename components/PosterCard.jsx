@@ -49,7 +49,7 @@ function PhotoPoster({ src, tag, title, cta, tint = 'rgba(0,0,0,0.78)' }) {
   return (
     <Frame className="bg-near-black">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+      <img src={src} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
       <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${tint} 5%, rgba(0,0,0,0.15) 70%)` }} />
       <Top tag={tag} />
       <div className="absolute inset-x-0 bottom-0" style={{ padding: cq(8) }}>

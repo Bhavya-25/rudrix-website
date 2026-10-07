@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, ArrowRight, AppWindow, LayoutPanelTop, ScanSearch, Palette, Smartphone, Layers, ShoppingBag, Globe, Puzzle, Blocks, Laptop, Apple, Tablet, TabletSmartphone } from 'lucide-react';
 import { servicesMenu } from '@/data/site';
 

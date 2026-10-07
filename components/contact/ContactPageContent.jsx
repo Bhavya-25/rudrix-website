@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Mail, Phone, Clock, MapPin } from 'lucide-react';
 import ContactForm from './ContactForm';
 import ContactFAQ from './ContactFAQ';

@@ -1,5 +1,5 @@
 'use client';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import { customSoftwareTech as master } from '@/data/services';
 import { toolCatalog } from '@/data/capabilities';
 

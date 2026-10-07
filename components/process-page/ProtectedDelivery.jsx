@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useState } from 'react';
-import { AnimatePresence, motion, useInView, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion, useInView, useReducedMotion } from 'framer-motion';
 import { Check, Lock, Plus } from 'lucide-react';
 import { protection as p } from '@/data/ourProcess';
 

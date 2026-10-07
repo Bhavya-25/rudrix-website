@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Repeat, Puzzle, Unplug, TrendingUp, TriangleAlert } from 'lucide-react';
 import { customSoftwareProblems as master } from '@/data/services';
 

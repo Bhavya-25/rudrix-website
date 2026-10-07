@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { icons } from './icons';
 import { custom } from '@/data/capabilities';
 

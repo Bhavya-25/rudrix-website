@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { m as motion, useInView, useReducedMotion } from 'framer-motion';
 import { workStats } from '@/data/work';
 
 const ease = [0.22, 1, 0.36, 1];

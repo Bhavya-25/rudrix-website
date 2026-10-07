@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
 import AvailabilityBadge from './AvailabilityBadge';
 import MegaMenu from './MegaMenu';
 import WhyMenu from './WhyMenu';

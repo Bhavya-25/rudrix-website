@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import WhyUsAccordion from './why-us/WhyUsAccordion';
 import WhyUsImage from './why-us/WhyUsImage';
 import { Asterisk, Sparkle } from './why-us/Sparkle';
@@ -13,11 +13,17 @@ export default function WhyChooseUs() {
   const reduce = useReducedMotion();
   const [active, setActive] = useState(whyUs.defaultIndex);
 
-  // warm the cache for the other photos once the section is mounted and the browser is idle
+  // warm the cache for the other photos on the visitor's first scroll/touch, so none of it competes with the first paint
   useEffect(() => {
-    const warm = () => whyUs.items.forEach((it) => { const im = new Image(); im.src = it.image; });
-    const id = 'requestIdleCallback' in window ? requestIdleCallback(warm) : setTimeout(warm, 1500);
-    return () => ('cancelIdleCallback' in window ? cancelIdleCallback(id) : clearTimeout(id));
+    let done = false;
+    const warm = () => {
+      if (done) return;
+      done = true;
+      whyUs.items.forEach((it) => { const im = new Image(); im.src = it.image; });
+    };
+    window.addEventListener('scroll', warm, { once: true, passive: true });
+    window.addEventListener('pointerdown', warm, { once: true, passive: true });
+    return () => { window.removeEventListener('scroll', warm); window.removeEventListener('pointerdown', warm); };
   }, []);
 
   return (

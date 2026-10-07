@@ -1,5 +1,5 @@
 'use client';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
 import { whyUs } from '@/data/whyUs';
 
 const ease = [0.22, 1, 0.36, 1];
@@ -17,7 +17,8 @@ export default function WhyUsImage({ active }) {
           alt={it.alt}
           width={1600}
           height={2000}
-          loading={active === whyUs.defaultIndex ? 'eager' : 'lazy'}
+          loading="lazy"
+          decoding="async"
           draggable={false}
           className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition: it.position }}

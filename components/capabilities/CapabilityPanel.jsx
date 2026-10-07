@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import ServiceCard from './ServiceCard';
 import ToolsList from './ToolsList';
 import CustomSolutionBar from './CustomSolutionBar';

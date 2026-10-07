@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import { upworkReviews as u } from '@/data/testimonials';
 

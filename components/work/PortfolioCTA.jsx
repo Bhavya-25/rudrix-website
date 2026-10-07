@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, MapPin, Bell, Calendar, UtensilsCrossed, Smile, ShoppingBasket, ChevronDown } from 'lucide-react';
 import { portfolioCta as c } from '@/data/work';
 

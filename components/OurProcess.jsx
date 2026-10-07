@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import ProcessCard from './process/ProcessCard';
 import SubscribeVisual from './process/SubscribeVisual';
 import RequestVisual from './process/RequestVisual';

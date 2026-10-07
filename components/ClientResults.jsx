@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import StatsCard from './results/StatsCard';
 import TestimonialCard from './results/TestimonialCard';
 import { results } from '@/data/results';

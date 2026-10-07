@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 
 const ease = [0.22, 1, 0.36, 1];
 const lab = 'text-[11px] font-medium tracking-[0.18em]';

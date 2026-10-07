@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, ArrowUpRight, Users, MessageSquareQuote, Workflow } from 'lucide-react';
 import { whyMenu } from '@/data/site';
 

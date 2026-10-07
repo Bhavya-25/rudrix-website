@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
 import CapabilityNavigation from './capabilities/CapabilityNavigation';
 import CapabilityPanel from './capabilities/CapabilityPanel';
 import FloatingCTA from './capabilities/FloatingCTA';

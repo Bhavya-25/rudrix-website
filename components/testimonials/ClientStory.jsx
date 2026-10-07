@@ -1,7 +1,7 @@
 'use client';
 import { useRef } from 'react';
 import Link from 'next/link';
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { m as motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { clientStory as s } from '@/data/testimonials';
 

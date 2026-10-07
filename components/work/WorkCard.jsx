@@ -1,5 +1,5 @@
 'use client';
-import { motion, useTransform } from 'framer-motion';
+import { m as motion, useTransform } from 'framer-motion';
 import { ProjectArticle } from './ProjectCard';
 
 const ease = [0.22, 1, 0.36, 1];

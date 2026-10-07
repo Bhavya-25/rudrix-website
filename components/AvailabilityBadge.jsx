@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { site } from '@/data/site';
 
 export default function AvailabilityBadge({ hidden = false }) {

@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import { footer } from '@/data/footer';
 import Reveal from './Reveal';
 

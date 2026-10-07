@@ -1,5 +1,5 @@
 'use client';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 
 // Scroll-triggered fade/translate used across the footer.
 export default function Reveal({ children, delay = 0, y = 30, className = '', as = 'div', ...rest }) {

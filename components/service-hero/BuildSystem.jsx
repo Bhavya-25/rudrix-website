@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import { buildSystem as master } from '@/data/services';
 
 const ease = [0.22, 1, 0.36, 1];

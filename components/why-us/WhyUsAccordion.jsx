@@ -1,5 +1,5 @@
 'use client';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { whyUs } from '@/data/whyUs';
 

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { results } from '@/data/results';
 
@@ -14,9 +14,17 @@ export default function TestimonialCard() {
   const [dir, setDir] = useState(1);
   const touch = useRef(null);
 
-  // preload the other photos so switching never flashes blank
+  // preload the other photos on the visitor's first scroll/touch (not during first paint) so switching never flashes blank
   useEffect(() => {
-    list.forEach((t) => { const im = new Image(); im.src = t.image; });
+    let done = false;
+    const warm = () => {
+      if (done) return;
+      done = true;
+      list.forEach((t) => { const im = new Image(); im.src = t.image; });
+    };
+    window.addEventListener('scroll', warm, { once: true, passive: true });
+    window.addEventListener('pointerdown', warm, { once: true, passive: true });
+    return () => { window.removeEventListener('scroll', warm); window.removeEventListener('pointerdown', warm); };
   }, []);
 
   const go = (d) => {
@@ -63,6 +71,8 @@ export default function TestimonialCard() {
             alt={t.alt}
             width={1800}
             height={1100}
+            loading="lazy"
+            decoding="async"
             draggable={false}
             className="h-full w-full object-cover"
             style={{ objectPosition: t.position }}
