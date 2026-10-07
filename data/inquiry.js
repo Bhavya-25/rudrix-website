@@ -1,0 +1,32 @@
+export const inquiry = {
+  heading: ['Have a product', 'in mind?'],
+  description:
+    "Tell us what you're trying to build, improve or solve. We'll help you figure out the next practical step.",
+  formHeading: "Tell us what you're building",
+  benefits: [
+    { label: 'Expert Development Team', icon: 'Users' },
+    { label: 'NDA Protected', icon: 'ShieldCheck' },
+    { label: 'Quick Response', icon: 'Rocket' },
+    { label: 'Free Consultation', icon: 'MessageSquareText' },
+    { label: 'Own Your IP', icon: 'MapPin' },
+    { label: 'Dedicated Developers', icon: 'Code2' },
+    { label: 'Fixed-Scope Estimates', icon: 'FileText' },
+    { label: 'Post-Launch Support', icon: 'LifeBuoy' },
+  ],
+  trustedLabel: 'TECHNOLOGY WE USE MOST',
+  stack: ['React', 'Next.js', 'Node.js', 'MongoDB', 'JavaScript', 'Tailwind CSS', 'GraphQL', 'Shopify', 'WordPress'],
+  services: [
+    'Web Development',
+    'UI/UX Design',
+    'Shopify Development',
+    'WordPress Development',
+    'Mobile App Development',
+    'Custom Software',
+    'AI & Automation',
+    'eCommerce Development',
+    'Existing Product Improvement',
+    'Other',
+  ],
+  image: '/images/inquiry.webp',
+  imageAlt: 'A person working on a laptop beside a bright window',
+};

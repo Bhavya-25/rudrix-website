@@ -1,0 +1,336 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html { scroll-behavior: smooth; overflow-x: clip; }
+body {
+  background: #fafbea;
+  color: #111111;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+:focus-visible { outline: 2px solid #ff4a00; outline-offset: 3px; }
+
+/* very subtle grain */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* availability pill: dark tab with concave "ears" that blend into the top edge */
+.status-tab { position: relative; }
+.status-tab::before,
+.status-tab::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 18px;
+  height: 18px;
+}
+.status-tab::before {
+  left: -18px;
+  background: radial-gradient(circle at 0 100%, transparent 17.5px, #171717 18px);
+}
+.status-tab::after {
+  right: -18px;
+  background: radial-gradient(circle at 100% 100%, transparent 17.5px, #171717 18px);
+}
+
+@keyframes live-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(102, 212, 90, 0.55); }
+  70% { box-shadow: 0 0 0 7px rgba(102, 212, 90, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(102, 212, 90, 0); }
+}
+.live-dot { animation: live-pulse 2.4s ease-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .live-dot { animation: none; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 32s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+@keyframes ring-spin {
+  to { transform: rotate(360deg); }
+}
+.ring-spin { animation: ring-spin var(--turn, 30s) linear infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .ring-spin { animation: none; }
+}
+
+@keyframes footer-ticker {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+.footer-ticker { animation: footer-ticker var(--dur, 60s) linear infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .footer-ticker { animation: none; }
+}
+
+/* Our process */
+.process-card {
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(255, 74, 0, 0.045), transparent 60%),
+    linear-gradient(180deg, #0e0e0e, #0a0a0a);
+}
+.process-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Test & optimise bars: each fill grows to the full track while its row is hovered */
+.metric-fill {
+  width: var(--rest, 60%);
+  background: linear-gradient(270deg, #ffd9c9 0%, #0b0b0b 40%);
+  box-shadow: 0 0 14px rgba(255, 74, 0, 0.25);
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.metric-row:hover .metric-fill,
+.metric-row:focus-within .metric-fill {
+  width: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .metric-fill { transition: none; }
+}
+
+/* Request card: endless opposite-direction icon tickers */
+@keyframes icon-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.icon-track { animation: icon-ticker 26s linear infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .icon-track { animation: none; }
+}
+
+/* Why choose us: decorative asterisk turns slowly and endlessly */
+@keyframes why-spin { to { transform: rotate(360deg); } }
+.why-spin { animation: why-spin 18s linear infinite; transform-origin: 50% 50%; }
+@media (prefers-reduced-motion: reduce) {
+  .why-spin { animation: none; }
+}
+
+/* Home Work section: project cards stack (sticky) on large screens; on small/short screens they simply scroll. */
+.work-slot { padding-bottom: 20px; }
+@media (min-width: 1024px) and (min-height: 880px) {
+  .work-head { position: sticky; top: 88px; }  /* pinned just under the 72px header until the whole stack has passed */
+  .work-slot { position: sticky; top: 256px; }  /* cards pin below the heading and slide over each other */
+}
+
+/* Client results: very subtle noise over the stats card */
+.stats-noise {
+  opacity: 0.07;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Project inquiry: endless left-to-right marquees (track = two identical copies, moves exactly one copy) */
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-right { animation: marquee-right var(--marquee, 36s) linear infinite; will-change: transform; }
+.marquee-left { animation: marquee-left var(--marquee, 36s) linear infinite; will-change: transform; }
+.marquee-mask { -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-right, .marquee-left { animation: none; }
+}
+
+/* Shared section rhythm + gutters (design tokens) */
+.section-y { padding-block: clamp(72px, 9vw, 128px); }
+.section-x { padding-inline: 20px; }
+@media (min-width: 640px) { .section-x { padding-inline: 32px; } }
+@media (min-width: 1024px) { .section-x { padding-inline: 48px; } }
+@media (min-width: 1280px) { .section-x { padding-inline: 88px; } }
+
+/* Hero text entrance: CSS-driven so it paints without waiting for JS hydration (LCP). */
+@keyframes hero-rise { from { opacity: 0; transform: translateY(0.45em); } to { opacity: 1; transform: none; } }
+.hero-rise { animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) backwards; }
+@keyframes hero-pop { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: none; } }
+.hero-pop { animation: hero-pop 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) backwards; }
+@media (prefers-reduced-motion: reduce) { .hero-rise, .hero-pop { animation: none; } }
+
+/* Inquiry popup: highlight chips scroll right-to-left, linear and slow (measured on the reference). */
+@keyframes popup-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.popup-ticker { animation: popup-ticker var(--sp, 18s) linear infinite; }
+@media (prefers-reduced-motion: reduce) { .popup-ticker { animation: none; } }
+
+/* Header: floating glass pill at the top of the page that expands to a full-width bar on scroll (measured on the reference). */
+.header-shell { transition: padding 0.35s cubic-bezier(0.4, 0, 0.2, 1), height 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+.header-bar {
+  position: relative;
+  transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-nav {
+  backdrop-filter: blur(16px) saturate(1.6);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 4px 24px rgba(10, 20, 50, 0.07), 0 1px 2px rgba(10, 20, 50, 0.04), inset 0 1px rgba(255, 255, 255, 0.8);
+}
+.glass-nav-solid {
+  backdrop-filter: blur(20px) saturate(1.8);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(228, 230, 237, 0.9);
+  box-shadow: 0 1px 2px rgba(10, 20, 50, 0.04), 0 12px 32px -8px rgba(10, 20, 50, 0.14);
+}
+@media (prefers-reduced-motion: reduce) { .header-shell, .header-bar { transition: none; } }
+
+/* About Us banner (measured on the reference): dotted paper, soft blue glow top-right, rising entrance, pulsing map pins. */
+.about-banner {
+  background:
+    radial-gradient(60% 70% at 100% 0%, rgba(0, 79, 255, 0.07), transparent 70%),
+    radial-gradient(1.2px 1.2px at 1px 1px, rgba(21, 24, 28, 0.12) 1px, transparent 1.6px) 0 0 / 22px 22px,
+    #f7f7f5;
+}
+@keyframes about-title { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes about-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.about-title { animation: about-title 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both; }
+.about-rise { animation: about-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0.24s) both; }
+.about-pin {
+  position: absolute; left: var(--x); top: var(--y); width: 14px; height: 14px; margin: -7px 0 0 -7px;
+  border-radius: 50%; background: #d63c00; box-shadow: 0 0 0 4px rgba(214, 60, 0, 0.18);
+}
+.about-pin::after {
+  content: ''; position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px;
+  border: 2px solid #d63c00; border-radius: 50%; animation: about-ping 2.6s infinite;
+}
+@keyframes about-ping { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(2.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .about-title, .about-rise, .about-pin::after { animation: none; } }
+
+/* About: milestone numbers. Orange digits with a fine speckle, like the reference's distressed numerals. */
+.milestone-num {
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-color: #ff4a00;
+  background-image:
+    radial-gradient(circle, #fff 0.55px, transparent 0.85px),
+    radial-gradient(circle, #fff 0.5px, transparent 0.8px),
+    radial-gradient(circle, #fff 0.45px, transparent 0.75px);
+  background-size: 4.3px 4.7px, 3.7px 3.1px, 5.3px 5.9px;
+  background-position: 0 0, 1.7px 2.1px, 3.1px 0.9px;
+}
+
+/* "Work With Us" CTA (measured on the reference): the arrow emits a soft orange ripple on a loop; on hover the label
+   rolls up, the arrow turns to ↗ and the ripple stops. */
+@keyframes cta-ripple {
+  0% { box-shadow: 0 0 0 4px rgba(255, 74, 0, 0.16); }
+  70% { box-shadow: 0 0 0 30px rgba(255, 74, 0, 0); }
+  100% { box-shadow: 0 0 0 30px rgba(255, 74, 0, 0); }
+}
+.cta-roll .cta-ripple { animation: cta-ripple 2.6s ease-out infinite; }
+.cta-roll:hover .cta-ripple, .cta-roll:focus-visible .cta-ripple { animation: none; box-shadow: none; }
+.cta-roll .cta-track { transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1); }
+.cta-roll:hover .cta-track, .cta-roll:focus-visible .cta-track { transform: translateY(-50%); }
+.cta-roll .cta-arrow { transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1); }
+.cta-roll:hover .cta-arrow, .cta-roll:focus-visible .cta-arrow { transform: rotate(-45deg); }
+@media (prefers-reduced-motion: reduce) {
+  .cta-roll .cta-ripple { animation: none; }
+  .cta-roll .cta-track, .cta-roll .cta-arrow { transition: none; }
+}
+
+/* About / Our standards: row hover (measured on the reference). White wipe from the right, title out,
+   summary in, thumbnail pops up, arrow turns. Mouse devices only; open rows are unaffected. */
+.std-wipe { clip-path: inset(0 0 0 100%); transition: clip-path 0.5s cubic-bezier(0.65, 0, 0.35, 1); }
+.std-sum { opacity: 0; transform: translateY(calc(-50% - 14px)); transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.std-thumb { opacity: 0; transform: translateY(-50%) scale(0.55) rotate(9deg); transform-origin: 50% 70%; transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+@media (hover: hover) {
+  .group:hover > .std-wipe, .group:focus-visible > .std-wipe { clip-path: inset(0); }
+  .group:hover > .std-title, .group:focus-visible > .std-title { opacity: 0; transform: translateY(-12px); }
+  .group:hover > .std-sum, .group:focus-visible > .std-sum { opacity: 1; transform: translateY(-50%); transition-delay: 0.12s; }
+  .group:hover > .std-thumb, .group:focus-visible > .std-thumb { opacity: 1; transform: translateY(-50%) scale(1) rotate(0deg); transition-delay: 0.08s; }
+  .group:hover > .std-arrow svg, .group:focus-visible > .std-arrow svg { transform: rotate(90deg); }
+  .group:hover > .std-arrow, .group:focus-visible > .std-arrow { color: #fff; background: #000; }
+}
+@media (prefers-reduced-motion: reduce) { .std-wipe, .std-sum, .std-thumb { transition: none; } }
+
+/* About story intro: highlighted phrases and inline quotes */
+.story-mark { background: linear-gradient(transparent 62%, rgba(255, 74, 0, 0.22) 62%); color: inherit; padding: 0 2px; transition: background-size 0.3s ease; }
+.story-block q { color: #111; font-style: italic; quotes: '“' '”' '“' '”'; }
+
+/* Clients carousel: wide screens let the previous slide peek in from the left (see ClientsSection pad). */
+@media (min-width: 1280px) { .clients-clip { margin-left: -22px; margin-right: -22px; } }
+
+@keyframes err-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { [class*='animate-[err-in'] { animation: none !important; } }
+
+/* Work hero: four layered cards, each shifted 35px right/down from the one behind (scales with viewport). */
+.pf-stack { --cw: min(34.4vw, 490px); --step: min(2.46vw, 35px); width: calc(var(--cw) + 3 * var(--step)); height: calc(var(--cw) * 0.714 + 3 * var(--step)); }
+.pf-stack { min-width: 260px; --cw: max(min(34.4vw, 490px), 200px); }
+.pf-layer { left: calc(var(--i) * var(--step)); top: calc(var(--i) * var(--step)); width: var(--cw); height: calc(var(--cw) * 0.714); border: 2px solid var(--c); background: #e9e9e6; }
+.pf-corner { position: absolute; width: 12px; height: 12px; background: var(--c); }
+.pf-tl { left: -7px; top: -7px; } .pf-tr { right: -7px; top: -7px; } .pf-bl { left: -7px; bottom: -7px; } .pf-br { right: -7px; bottom: -7px; }
+@media (max-width: 640px) { .pf-stack { --cw: 62vw; --step: 5.5vw; } .pf-corner { width: 9px; height: 9px; } .pf-tl { left: -5px; top: -5px; } .pf-tr { right: -5px; top: -5px; } .pf-bl { left: -5px; bottom: -5px; } .pf-br { right: -5px; bottom: -5px; } }
+
+@media (prefers-reduced-motion: reduce) { .marquee-left, .marquee-right { animation: none; } }
+
+/* Work CTA: banner with a phone that breaks out above and below it. */
+.pcta-banner { min-height: 440px; }
+.pcta-phone-wrap { width: min(62vw, 250px); margin-top: -150px; margin-bottom: -90px; }
+@media (min-width: 1024px) {
+  .pcta { --bh: clamp(380px, 33vw, 460px); }
+  .pcta-banner { height: var(--bh); min-height: 0; }
+  .pcta-phone-wrap { width: calc(var(--bh) * 0.708); right: 5%; top: calc(var(--bh) * -0.19); margin: 0; }
+}
+@keyframes pcta-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.pcta-float { animation: pcta-float 5.5s ease-in-out infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .pcta-float { animation: none; } }
+
+/* Trusted & Recognized: fan of overlapping cards (measured on the reference). --cw is the centre card width. */
+.rc-stage { --cw: clamp(200px, 24vw, 345px); height: calc(var(--cw) * 1.21); }
+.rc-card { width: var(--cw); height: calc(var(--cw) * 1.21); margin-left: calc(var(--cw) * -0.5); transform-origin: 50% 100%; }
+.rc-inner { width: 100%; height: 100%; transform-origin: 50% 100%; transform: translateX(calc(var(--x) * var(--cw))) translateY(calc(var(--y) * var(--cw))) scale(var(--s)); transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.28)); animation: rc-bob 7s ease-in-out infinite; animation-delay: calc(var(--x) * 2s); }
+.rc-card:hover { z-index: 9 !important; }
+.rc-card:hover .rc-inner { transform: translateX(calc(var(--x) * var(--cw))) translateY(calc(var(--y) * var(--cw) - 6px)) scale(calc(var(--s) * 1.03)); }
+.rc-face { clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%); padding-bottom: 6%; }
+@keyframes rc-bob { 0%, 100% { margin-top: 0; } 50% { margin-top: -3px; } }
+@media (max-width: 640px) {
+  .rc-stage { --cw: 62vw; }
+  
+}
+@media (prefers-reduced-motion: reduce) { .rc-inner { animation: none; transition: none; } }
+
+.rc-card.rc-jump .rc-inner { transition: none; }
+.rc-card { transition: opacity 0.3s; }
+.rc-card.rc-jump, .rc-card.rc-hide { opacity: 0 !important; }
+.rc-card.rc-hide { pointer-events: none; }
+
+/* Working process: stippled orange numerals + CTA arrow nudge */
+.wp-num {
+  color: transparent;
+  background-image: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.55) 0.7px, transparent 1.1px), linear-gradient(#ff5a1f, #ff5a1f);
+  background-size: 3px 3px, 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
