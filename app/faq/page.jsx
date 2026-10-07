@@ -1,14 +1,15 @@
+import { pageMeta } from '@/lib/seo';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { faq } from '@/data/faq';
 import Link from 'next/link';
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'Software Development FAQ: Costs, Timelines, Process | Rudrix',
   description: 'Honest answers to common questions about software development: cost, timelines, MVPs, working with an existing team, NDAs and how to get started.',
   alternates: { canonical: '/faq' },
-};
+});
 
 export default function FaqPage() {
   const all = Object.values(faq.categories).flat();

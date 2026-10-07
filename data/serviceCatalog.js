@@ -18,7 +18,7 @@ const mk = (o) => ({
   icon: o.icon,
   short: o.short,
   seoTitle: `${o.name} Services | Rudrix`,
-  description: o.short,
+  description: `${o.short} Talk to the Rudrix team about your project.`,
   h1: o.h1,
   intro: [o.intro],
   problem: { heading: o.problem[0], text: o.problem[1], points: o.problem[2], after: o.problem[3] },

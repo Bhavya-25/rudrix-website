@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/seo';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import OurProcessHero from '@/components/process-page/OurProcessHero';
@@ -11,11 +12,11 @@ import ConversationCTA from '@/components/process-page/ConversationCTA';
 import FAQSection from '@/components/FAQSection';
 import ProjectInquirySection from '@/components/ProjectInquirySection';
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'Our Process | Rudrix',
   description: 'From the first conversation to final deployment, every Rudrix project runs on an open, reliable process you can track step by step.',
   alternates: { canonical: '/our-process' },
-};
+});
 
 export default function OurProcessPage() {
   return (

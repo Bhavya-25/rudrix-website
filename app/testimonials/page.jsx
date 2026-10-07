@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/seo';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import TestimonialsHero from '@/components/testimonials/TestimonialsHero';
@@ -6,11 +7,11 @@ import ClientStory from '@/components/testimonials/ClientStory';
 import FAQSection from '@/components/FAQSection';
 import ProjectInquirySection from '@/components/ProjectInquirySection';
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'Testimonials | Rudrix',
   description: 'Real feedback from founders, product teams and businesses building better digital experiences with Rudrix.',
   alternates: { canonical: '/testimonials' },
-};
+});
 
 export default function TestimonialsPage() {
   return (

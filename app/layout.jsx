@@ -21,7 +21,9 @@ export const metadata = {
     description: 'Custom software, web applications and digital products, designed and built around real business problems.',
     type: 'website',
     siteName: 'Rudrix',
+    url: '/',
   },
+  twitter: { card: 'summary_large_image', title: 'Software Development Agency for Startups & Growing Businesses | Rudrix', description: 'Custom software, web applications and digital products, designed and built around real business problems.' },
 };
 
 export const viewport = { width: 'device-width', initialScale: 1 };
@@ -31,6 +33,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={sans.variable}>
       <body>
         {children}
+        <JsonLd data={{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Rudrix', url: siteUrl }} />
         <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Organization', name: 'Rudrix', url: siteUrl, email: 'hello@rudrix.com', description: 'Software development agency building custom software, web applications and digital products.' }} />
       </body>
     </html>

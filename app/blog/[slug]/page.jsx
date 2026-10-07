@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
@@ -11,7 +12,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const p = blogPosts.find((x) => x.slug === slug);
-  return { title: p ? `${p.title} — Rudrix` : 'Not found', description: p?.excerpt };
+  if (!p) return { title: 'Not found', robots: { index: false } };
+  return pageMeta({ title: `${p.title} — Rudrix`, description: p.excerpt, alternates: { canonical: `/blog/${slug}` }, ogType: 'article' });
 }
 
 const fmt = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });

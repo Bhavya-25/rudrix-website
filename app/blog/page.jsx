@@ -1,12 +1,14 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { blogPosts } from '@/data/blog';
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'Blog — Rudrix',
   description: 'Practical writing on product, engineering and e-commerce from the Rudrix team.',
-};
+  alternates: { canonical: '/blog' },
+});
 
 const fmt = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 

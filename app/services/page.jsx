@@ -1,14 +1,15 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { icons } from '@/components/capabilities/icons';
 import { services } from '@/data/services';
 
-export const metadata = {
+export const metadata = pageMeta({
   title: 'Software Development Services: Custom Software, Web, SaaS & Design | Rudrix',
   description: 'Custom software, web development, SaaS, UI/UX design, eCommerce, mobile apps, MVPs and ongoing support from one practical team. Explore Rudrix services.',
   alternates: { canonical: '/services' },
-};
+});
 
 const steps = [
   ['Understand', 'the business and users'],

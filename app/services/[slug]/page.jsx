@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const s = serviceBySlug(slug);
   if (!s) return { title: 'Not found' };
-  return { title: s.seoTitle, description: s.description, alternates: { canonical: `/services/${s.slug}` } };
+  return pageMeta({ title: s.seoTitle, description: s.description, alternates: { canonical: `/services/${s.slug}` } });
 }
 
 export default async function ServicePage({ params }) {
