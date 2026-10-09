@@ -341,3 +341,6 @@ body {
   70%, 100% { transform: scale(2.5); opacity: 0; }
 }
 .wa-pulse { animation: wa-pulse 1.7s cubic-bezier(0.2, 0.6, 0.35, 1) infinite; }
+
+/* hide the floating WhatsApp button while the mobile menu is open */
+html[data-menu='open'] .wa-fab { opacity: 0; pointer-events: none; visibility: hidden; }

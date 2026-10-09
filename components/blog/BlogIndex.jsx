@@ -108,7 +108,7 @@ export default function BlogIndex({ posts }) {
         </div>
       </section>
 
-      <Link href="/contact" className="group/p fixed bottom-[max(20px,env(safe-area-inset-bottom))] left-1/2 z-[55] flex max-w-[calc(100vw-110px)] -translate-x-1/2 items-center gap-4 rounded-[6px] bg-[#111] py-3 pl-4 pr-3 text-white shadow-[0_14px_40px_-12px_rgba(0,0,0,0.5)] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#ff4a00]">
+      <Link href="/contact" className="group/p fixed bottom-[max(20px,env(safe-area-inset-bottom))] left-4 z-[55] flex max-w-[calc(100vw-108px)] items-center sm:left-1/2 sm:-translate-x-1/2 gap-4 rounded-[6px] bg-[#111] py-3 pl-4 pr-3 text-white shadow-[0_14px_40px_-12px_rgba(0,0,0,0.5)] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#ff4a00]">
         <span aria-hidden className="grid h-9 w-9 shrink-0 place-items-center rounded-[6px] bg-[#ff4a00] text-[18px] font-bold leading-none">R</span>
         <span className="min-w-0 truncate text-[clamp(14px,1.3vw,18px)]">Ready to build your next product?</span>
         <span aria-hidden className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 transition-colors group-hover/p:bg-white/25"><ArrowRight className="h-4 w-4 -rotate-45" /></span>

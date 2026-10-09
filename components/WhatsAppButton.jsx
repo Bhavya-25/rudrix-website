@@ -1,8 +1,23 @@
+'use client';
+import { useEffect, useState } from 'react';
 import { whatsapp } from '@/data/site';
 
 // Floating WhatsApp click-to-chat button, mounted once in app/layout.jsx so it appears on every page.
 // Plain link (no client JS): opens WhatsApp with an editable prefilled message; nothing is sent automatically.
 export default function WhatsAppButton() {
+  // On phones, step aside while the "Have a product in mind?" inquiry section is on screen so the icon never sits on its text or form.
+  const [away, setAway] = useState(false);
+  useEffect(() => {
+    const el = document.getElementById('contact');
+    if (!el || !('IntersectionObserver' in window)) return undefined;
+    const mq = window.matchMedia('(max-width: 639px)');
+    let inView = false;
+    const apply = () => setAway(inView && mq.matches);
+    const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; apply(); }, { threshold: 0.05 });
+    io.observe(el);
+    mq.addEventListener('change', apply);
+    return () => { io.disconnect(); mq.removeEventListener('change', apply); };
+  }, []);
   const number = String(whatsapp.number || '').replace(/\D/g, '');
   if (number.length < 8) return null;
   const href = `https://wa.me/${number}?text=${encodeURIComponent(whatsapp.message)}`;
@@ -12,7 +27,9 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={whatsapp.label}
-      className="group fixed bottom-[max(20px,env(safe-area-inset-bottom))] right-[max(20px,env(safe-area-inset-right))] z-[60] flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_-6px_rgba(0,0,0,0.35)] transition-[transform,box-shadow,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#1ebe5b] hover:shadow-[0_14px_30px_-8px_rgba(37,211,102,0.6)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-3 focus-visible:outline-[#128c4a] motion-reduce:transition-none sm:h-[60px] sm:w-[60px]"
+      aria-hidden={away || undefined}
+      tabIndex={away ? -1 : undefined}
+      className={`wa-fab group fixed bottom-[max(20px,env(safe-area-inset-bottom))] right-[max(20px,env(safe-area-inset-right))] z-[60] flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_-6px_rgba(0,0,0,0.35)] transition-[transform,box-shadow,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#1ebe5b] hover:shadow-[0_14px_30px_-8px_rgba(37,211,102,0.6)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-3 focus-visible:outline-[#128c4a] motion-reduce:transition-none sm:h-[60px] sm:w-[60px] ${away ? 'pointer-events-none translate-y-3 opacity-0' : ''}`}
     >
       <span aria-hidden className="wa-pulse pointer-events-none absolute inset-[7px] -z-10 rounded-full bg-[#25D366] motion-reduce:hidden" />
       <span aria-hidden className="pointer-events-none absolute right-[calc(100%+12px)] hidden whitespace-nowrap rounded-[8px] bg-[#111] px-3.5 py-2 text-[14px] font-medium text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 lg:block">

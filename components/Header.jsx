@@ -4,13 +4,15 @@ import { AnimatePresence, m as motion } from 'framer-motion';
 import AvailabilityBadge from './AvailabilityBadge';
 import MegaMenu from './MegaMenu';
 import WhyMenu from './WhyMenu';
-import { nav, site, whyMenu } from '@/data/site';
+import { ChevronDown } from 'lucide-react';
+import { nav, site, whyMenu, servicesMenu } from '@/data/site';
 
 const ease = [0.22, 1, 0.36, 1];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [sub, setSub] = useState(null); // which mobile accordion (Services / Why Rudrix) is expanded
 
   // Same threshold as the reference: the bar switches state once the page has scrolled past 20px.
   useEffect(() => {
@@ -22,10 +24,13 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
+    document.documentElement.dataset.menu = open ? 'open' : ''; // lets the floating WhatsApp button step aside
+    if (!open) setSub(null);
     const onKey = (e) => e.key === 'Escape' && setOpen(false);
     window.addEventListener('keydown', onKey);
     return () => {
       document.body.style.overflow = '';
+      document.documentElement.dataset.menu = '';
       window.removeEventListener('keydown', onKey);
     };
   }, [open]);
@@ -121,21 +126,59 @@ export default function Header() {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 + i * 0.07, ease }}
                 >
-                  <a
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="block py-2 text-[clamp(30px,min(12vw,7.5vh),56px)] font-bold leading-[1.05] tracking-tight"
-                  >
-                    {item.label}
-                  </a>
-                  {item.why && (
-                    <ul className="mb-2 ml-1 flex flex-col">
-                      {whyMenu.items.map((sub) => (
-                        <li key={sub.label}>
-                          <a href={sub.href} onClick={() => setOpen(false)} className="block py-1.5 text-[18px] text-white/65">{sub.label}</a>
-                        </li>
-                      ))}
-                    </ul>
+                  {item.mega || item.why ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setSub((v) => (v === item.label ? null : item.label))}
+                        aria-expanded={sub === item.label}
+                        aria-controls={`m-sub-${i}`}
+                        className="flex w-full items-center justify-between gap-4 py-2 text-left text-[clamp(30px,min(12vw,7.5vh),56px)] font-bold leading-[1.05] tracking-tight"
+                      >
+                        {item.label}
+                        <ChevronDown className={`h-7 w-7 shrink-0 text-white/70 transition-transform duration-300 ${sub === item.label ? 'rotate-180' : ''}`} aria-hidden />
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {sub === item.label && (
+                          <motion.ul
+                            id={`m-sub-${i}`}
+                            key="sub"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.35, ease }}
+                            className="mb-2 ml-1 flex flex-col overflow-hidden"
+                          >
+                            {item.why
+                              ? whyMenu.items.map((s2) => (
+                                  <li key={s2.label}>
+                                    <a href={s2.href} onClick={() => setOpen(false)} className="block py-2 text-[19px] text-white/70">{s2.label}</a>
+                                  </li>
+                                ))
+                              : servicesMenu.map((g) => (
+                                  <li key={g.name} className="pb-2">
+                                    <p className="pt-2 text-[12px] font-medium uppercase tracking-[0.08em] text-white/40">{g.name}</p>
+                                    <ul>
+                                      {g.items.map((s2) => (
+                                        <li key={s2.label}>
+                                          <a href={s2.href} onClick={() => setOpen(false)} className="block py-1.5 text-[19px] text-white/70">{s2.label}</a>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </li>
+                                ))}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
+                    </>
+                  ) : (
+                    <a
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="block py-2 text-[clamp(30px,min(12vw,7.5vh),56px)] font-bold leading-[1.05] tracking-tight"
+                    >
+                      {item.label}
+                    </a>
                   )}
                 </motion.li>
               ))}
