@@ -5,6 +5,16 @@ export const site = {
   email: 'info@rudrix.co.in',
 };
 
+// Floating WhatsApp button. Set the business number in ONE place: either here or via NEXT_PUBLIC_WHATSAPP_NUMBER.
+// International format, digits only: country code + number, no "+", spaces or brackets (e.g. 919876543210).
+// While the number is empty the button is not rendered, so there is never a dead or fake link.
+export const whatsapp = {
+  number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919888792614',
+  label: 'Chat with Rudrix Digital Solutions on WhatsApp',
+  hint: 'Chat with us',
+  message: 'Hi Rudrix Digital Solutions, I visited your website and would like to discuss a project.',
+};
+
 export const nav = [
   { label: 'Works', href: '/work' },
   { label: 'Services', href: '/services', mega: true },
