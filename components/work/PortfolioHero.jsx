@@ -1,5 +1,6 @@
 'use client';
-import { m as motion, useReducedMotion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { portfolioHero as p } from '@/data/work';
 
 const ease = [0.22, 1, 0.36, 1];

@@ -454,7 +454,7 @@ services.push(...extraServices);
 export const serviceBySlug = (slug) => services.find((s) => s.slug === slug);
 
 // Groups used by the mega menu.
-export const serviceGroups = ['Software', 'Web & eCommerce', 'Design & Mobile'].map((name) => ({
+export const serviceGroups = ['Software', 'Web & eCommerce', 'Design & Mobile', 'Marketing'].map((name) => ({
   name,
   items: services.filter((s) => s.group === name),
 }));

@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import FAQItem from './faq/FAQItem';
 import { faq as defaultFaq } from '@/data/faq';
 

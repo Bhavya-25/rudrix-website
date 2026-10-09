@@ -1,7 +1,8 @@
 'use client';
 import { useRef } from 'react';
 import Link from 'next/link';
-import { m as motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { m as motion, useScroll, useTransform } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight, ArrowUpRight, Check } from 'lucide-react';
 import { finalCta as c } from '@/data/ourProcess';
 import { recognition } from '@/data/work';

@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { m as motion, useReducedMotion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { footer } from '@/data/footer';
 import Reveal from './Reveal';
 import { postJson } from '@/lib/submitForm';

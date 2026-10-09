@@ -1,6 +1,7 @@
 'use client';
 import { useMemo, useState } from 'react';
-import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ChevronDown } from 'lucide-react';
 import Card from './ProjectCard';
 import { selectedProjects as sp } from '@/data/work';

@@ -1,6 +1,7 @@
 'use client';
 import { useId, useState } from 'react';
-import { m as motion, useReducedMotion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { contact } from '@/data/contact';
 
 export default function ContactFAQ() {

@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { m as motion, useInView, useReducedMotion } from 'framer-motion';
+import { m as motion, useInView } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { results } from '@/data/results';
 
 const ease = [0.22, 1, 0.36, 1];
@@ -12,7 +13,9 @@ function CountUp({ value }) {
   const reduce = useReducedMotion();
   const m = value.match(/^(\d+)(.*)$/);
   const target = m ? Number(m[1]) : 0;
-  const [n, setN] = useState(reduce || !m ? target : 0);
+  // start at 0 on server AND client (a reduced-motion initial value caused a hydration mismatch); jump to the final value after mount
+  const [n, setN] = useState(!m ? target : 0);
+  useEffect(() => { if (reduce) setN(target); }, [reduce, target]);
   useEffect(() => {
     if (!inView || reduce || !m) return;
     let raf;

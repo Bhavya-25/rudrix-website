@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { m as motion, useReducedMotion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import WhyUsAccordion from './why-us/WhyUsAccordion';
 import WhyUsImage from './why-us/WhyUsImage';
 import { Asterisk, Sparkle } from './why-us/Sparkle';

@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, LayoutGroup, m as motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, LayoutGroup, m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight, Plus } from 'lucide-react';
 import { trust as t } from '@/data/ourProcess';
 

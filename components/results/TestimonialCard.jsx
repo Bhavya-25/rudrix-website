@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { results } from '@/data/results';
 

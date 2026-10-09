@@ -78,4 +78,11 @@ export const servicesMenu = [
     { label: 'Android App', sub: 'Native Android apps', icon: 'Tablet', href: '/services/android-app-development' },
     { label: 'Hybrid App', sub: 'End-to-end development', icon: 'TabletSmartphone', href: '/services/hybrid-app-development' },
   ] },
+  { name: 'MARKETING', items: [
+    { label: 'Digital Marketing', sub: 'Joined-up growth plans', icon: 'Megaphone', href: '/services/digital-marketing' },
+    { label: 'SEO', sub: 'Sustainable search visibility', icon: 'Search', href: '/services/seo' },
+    { label: 'PPC', sub: 'Smarter paid search', icon: 'MousePointerClick', href: '/services/ppc' },
+    { label: 'Facebook Ads', sub: 'Reach the right audience', icon: 'Target', href: '/services/facebook-ads' },
+    { label: 'Social Media', sub: 'Consistent brand presence', icon: 'Share2', href: '/services/social-media-marketing' },
+  ] },
 ];

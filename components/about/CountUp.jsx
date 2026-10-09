@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { useInView, useReducedMotion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 
 // "26+" / "98%" / "24h": counts 0 → number once when scrolled into view, keeping the prefix/suffix.
 export default function CountUp({ value, duration = 1800 }) {
@@ -9,7 +10,9 @@ export default function CountUp({ value, duration = 1800 }) {
   const reduce = useReducedMotion();
   const m = value.match(/^(\d+)(.*)$/);
   const target = m ? Number(m[1]) : 0;
-  const [n, setN] = useState(reduce || !m ? target : 0);
+  // start at 0 on server AND client (a reduced-motion initial value caused a hydration mismatch); jump to the final value after mount
+  const [n, setN] = useState(!m ? target : 0);
+  useEffect(() => { if (reduce) setN(target); }, [reduce, target]);
 
   useEffect(() => {
     if (!inView || reduce || !m) return;

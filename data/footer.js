@@ -19,6 +19,8 @@ export const footer = {
       { label: 'UI/UX Design', href: '/services/ui-ux-design' },
       { label: 'Mobile App Development', href: '/services/mobile-app-development' },
       { label: 'UX Audit', href: '/services/ux-audit' },
+      { label: 'Digital Marketing', href: '/services/digital-marketing' },
+      { label: 'SEO', href: '/services/seo' },
     ] },
     { title: 'Company', links: [
       { label: 'About us', href: '/about' },

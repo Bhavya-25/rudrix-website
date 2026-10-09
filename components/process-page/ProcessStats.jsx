@@ -1,5 +1,6 @@
 'use client';
-import { m as motion, useReducedMotion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { Counter } from '@/components/work/WorkStats';
 import { workStats } from '@/data/work';
 

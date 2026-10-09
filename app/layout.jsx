@@ -34,6 +34,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={sans.variable}>
       <body>
+        <noscript><style>{'[style*="opacity: 0"]{opacity:1!important;transform:none!important}'}</style></noscript>
         <MotionProvider>{children}</MotionProvider>
         <WhatsAppButton />
         <JsonLd data={{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Rudrix', url: siteUrl }} />

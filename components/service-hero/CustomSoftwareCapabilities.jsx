@@ -1,7 +1,8 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { m as motion, useInView, useReducedMotion } from 'framer-motion';
+import { m as motion, useInView } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { customSoftwareCapabilities as master } from '@/data/services';
 

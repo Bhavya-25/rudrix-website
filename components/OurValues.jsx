@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { m as motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { m as motion, useScroll, useTransform } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import ValueCard from './values/ValueCard';
 import { values } from '@/data/values';
 

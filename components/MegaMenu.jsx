@@ -1,11 +1,12 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
-import { ChevronDown, ArrowRight, AppWindow, LayoutPanelTop, ScanSearch, Palette, Smartphone, Layers, ShoppingBag, Globe, Puzzle, Blocks, Laptop, Apple, Tablet, TabletSmartphone } from 'lucide-react';
+import { AnimatePresence, m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
+import { ChevronDown, ArrowRight, AppWindow, LayoutPanelTop, ScanSearch, Palette, Smartphone, Layers, ShoppingBag, Globe, Puzzle, Blocks, Laptop, Apple, Tablet, TabletSmartphone, Megaphone, Search, MousePointerClick, Target, Share2 } from 'lucide-react';
 import { servicesMenu } from '@/data/site';
 
-const menuIcons = { AppWindow, LayoutPanelTop, ScanSearch, Palette, Smartphone, Layers, ShoppingBag, Globe, Puzzle, Blocks, Laptop, Apple, Tablet, TabletSmartphone };
+const menuIcons = { AppWindow, LayoutPanelTop, ScanSearch, Palette, Smartphone, Layers, ShoppingBag, Globe, Puzzle, Blocks, Laptop, Apple, Tablet, TabletSmartphone, Megaphone, Search, MousePointerClick, Target, Share2 };
 
 const ease = [0.22, 1, 0.36, 1];
 

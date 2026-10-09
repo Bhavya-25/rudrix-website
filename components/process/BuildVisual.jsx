@@ -14,7 +14,8 @@ const total = process.code.length;
  */
 export default function BuildVisual() {
   const [ref, show, reduce, live] = useReveal();
-  const [count, setCount] = useState(reduce ? total : 0);
+  // start at 0 on server AND client (a reduced-motion initial value caused a hydration mismatch); jump to the final value after mount
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (reduce) return setCount(total);

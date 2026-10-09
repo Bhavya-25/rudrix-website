@@ -1,6 +1,7 @@
 'use client';
 import { useRef } from 'react';
-import { useReducedMotion, useScroll } from 'framer-motion';
+import { useScroll } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import RotatingImageRing from './RotatingImageRing';
 import HeroCTA from './HeroCTA';
 import GrowthPartners from './GrowthPartners';

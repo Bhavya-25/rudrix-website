@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { m as motion, useReducedMotion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight } from 'lucide-react';
 import RollCta from './RollCta';
 import { milestones } from '@/data/about';

@@ -1,5 +1,6 @@
 'use client';
-import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { whyUs } from '@/data/whyUs';
 
 const ease = [0.22, 1, 0.36, 1];

@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { m as motion, useReducedMotion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { Star, X } from 'lucide-react';
 import { upworkReviews as u } from '@/data/testimonials';
 

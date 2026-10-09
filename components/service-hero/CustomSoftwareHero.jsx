@@ -1,7 +1,8 @@
 'use client';
 import { useRef } from 'react';
 import Link from 'next/link';
-import { m as motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { m as motion, useScroll, useTransform } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight } from 'lucide-react';
 import { customSoftwareHero as master } from '@/data/services';
 

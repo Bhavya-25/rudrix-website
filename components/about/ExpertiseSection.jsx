@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { m as motion, useReducedMotion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import ExpertiseIcon from './ExpertiseIcons';
 import RollCta from './RollCta';
 import { expertise } from '@/data/about';

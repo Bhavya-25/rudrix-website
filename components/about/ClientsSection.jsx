@@ -1,7 +1,8 @@
 'use client';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { m as motion, useReducedMotion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { clients } from '@/data/about';
 

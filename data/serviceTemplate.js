@@ -1,3 +1,4 @@
+import { projectsForService } from './projects';
 // Maps one entry of data/services.js (selected by URL slug) onto the props of the shared service-page sections.
 // The Custom Software Development exports in data/services.js are the master content/defaults; every other service only
 // overrides what its own data provides. UI, icons, images and animations come from the shared components.
@@ -76,7 +77,7 @@ export function getServiceTemplate(service) {
     hero, why, capabilities, problems, cta, faq,
     tech: customSoftwareTech,
     tour: master ? customSoftwareTour : null, // software-type gallery only exists for the master service
-    cases: customSoftwareCases,
+    cases: { ...customSoftwareCases, projects: projectsForService(service.slug) },
     industries: customSoftwareIndustries,
     system: buildSystem,
     journey: buildJourney,

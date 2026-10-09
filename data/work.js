@@ -37,44 +37,6 @@ export const conceptCases = {
   title: 'Work That Speaks for Itself.',
   text: "Explore digital experiences we've crafted across industries, from e-commerce to enterprise.",
   empty: 'No projects match these filters yet.',
-  projects: [
-    {
-      id: 'finora', color: '#d3560f', title: 'Finora', industry: 'FinTech',
-      description: 'Finora is a digital banking concept designed to make everyday money management simpler across web and mobile.',
-      services: ['Product Design', 'Web Development', 'Mobile Development'],
-      image: '/images/work/01-finora.webp', alt: 'Mobile banking app on a smartphone held in one hand', position: '50% 50%',
-      challenge: 'Banking apps often bury everyday tasks behind long menus, so simple actions like checking a balance or sending money take too many steps.',
-      solution: 'A clearer home screen built around the most common tasks, with consistent navigation across the web and mobile apps.',
-      cta: { label: 'Discuss a similar project', href: '/contact' },
-    },
-    {
-      id: 'healthsync', color: '#1666d9', title: 'HealthSync', industry: 'Healthcare',
-      description: 'HealthSync is a connected healthcare platform concept that brings patients, providers and health information into one place.',
-      services: ['UI/UX Design', 'Web Development', 'Backend Development'],
-      image: '/images/work/02-healthsync.webp', alt: 'Doctor in a white coat using a healthcare app on a phone', position: '50% 40%',
-      challenge: 'Patient information often lives in separate systems, which makes it hard for people and providers to see the full picture.',
-      solution: 'One simple, role-based experience for patients and providers, backed by a structure that connects the underlying data.',
-      cta: { label: 'Discuss a similar project', href: '/contact' },
-    },
-    {
-      id: 'scalecommerce', color: '#1d3520', title: 'ScaleCommerce', industry: 'E-commerce',
-      description: 'ScaleCommerce is an online store concept built to be easy to shop and easy for a small team to manage.',
-      services: ['Shopify Development', 'Custom Development', 'Conversion Optimization'],
-      image: '/images/work/03-scalecommerce.webp', alt: 'Online store product page on a laptop', position: '50% 50%',
-      challenge: 'Product pages and checkout added friction, and the store was awkward for the team to update and keep in sync with inventory.',
-      solution: 'Clearer product pages, a shorter checkout and custom Shopify sections that let the team manage content without a developer.',
-      cta: { label: 'Discuss a similar project', href: '/contact' },
-    },
-    {
-      id: 'nexaflow', color: '#132f63', title: 'NexaFlow', industry: 'SaaS',
-      description: 'NexaFlow is a workflow software concept that helps teams plan, track and connect their day-to-day work.',
-      services: ['Product Design', 'SaaS Development', 'Cloud Integration'],
-      image: '/images/work/04-nexaflow.webp', alt: 'Workflow software interface on screen', position: '50% 50%',
-      challenge: 'Teams juggled several tools and spreadsheets, so work status was scattered and hard to trust.',
-      solution: 'A focused product with accounts, dashboards and integrations that bring status and tasks into one clear view.',
-      cta: { label: 'Discuss a similar project', href: '/contact' },
-    },
-  ],
 };
 
 // Work page closing CTA. The phone shows a generic DEMO interface (no real client).

@@ -30,10 +30,10 @@ export default function ServicePageView({ service }) {
       <CustomSoftwareWhy data={t.why} />
       <IndustriesMarquee data={t.industries} />
       <CustomSoftwareCapabilities data={t.capabilities} />
-      <TechGrid data={t.tech} />
+      {service.group !== 'Marketing' && <TechGrid data={t.tech} />}
       {t.tour && <SoftwareTour data={t.tour} />}
       {t.problems && <ProblemsSection data={t.problems} />}
-      <CaseStudyShowcase data={t.cases} />
+      {service.group !== 'Marketing' && t.cases.projects.length > 0 && <CaseStudyShowcase data={t.cases} />}
       <BuildCTA data={t.cta} />
       <ClientsSection />
       <BuildSystem data={t.system} />

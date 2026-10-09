@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { m as motion, useInView, useReducedMotion } from 'framer-motion';
+import { m as motion, useInView } from 'framer-motion';
+import { useReducedMotion } from '@/lib/useReducedMotion';
 import { workStats } from '@/data/work';
 
 const ease = [0.22, 1, 0.36, 1];
@@ -8,7 +9,9 @@ const ease = [0.22, 1, 0.36, 1];
 function Count({ value, reduce }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '0px 0px -10% 0px' });
-  const [n, setN] = useState(reduce ? value : 0);
+  // start at 0 on server AND client (a reduced-motion initial value caused a hydration mismatch); jump to the final value after mount
+  const [n, setN] = useState(0);
+  useEffect(() => { if (reduce) setN(value); }, [reduce, value]);
   useEffect(() => {
     if (!inView || reduce) return undefined;
     let raf;
