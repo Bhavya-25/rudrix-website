@@ -2,16 +2,13 @@
 import { useState } from 'react';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { contact } from '@/data/contact';
+import { postJson } from '@/lib/submitForm';
 
 const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 const empty = { name: '', email: '', phone: '', company: '', service: '', budget: '', timeline: '', message: '', consent: false };
 const inp = 'w-full rounded-[8px] border border-[#e2e2e0] bg-[#fafafa] px-4 text-[16px] text-ink outline-none transition-[border-color,box-shadow,background-color] duration-300 placeholder:text-[#6b6b6b] hover:border-[#cfcfcc] focus:border-rudrix focus:bg-white focus:shadow-[0_0_0_3px_rgba(255,74,0,0.14)] disabled:opacity-60';
 
-// Isolated submit handler: replace the body with a real API call (POST `values`) when a backend exists.
-async function submitInquiry(values) {
-  await new Promise((r) => setTimeout(r, 900));
-  return { ok: true, values };
-}
+const submitInquiry = (values) => postJson('/api/contact', { ...values, source: 'contact-page' });
 
 function Field({ id, label, required, error, children, className = '' }) {
   return (
@@ -40,6 +37,7 @@ export default function ContactForm() {
   const [v, setV] = useState(empty);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [serverError, setServerError] = useState('');
   const set = (k) => (e) => {
     const val = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setV((p) => ({ ...p, [k]: val }));
@@ -63,15 +61,16 @@ export default function ContactForm() {
       document.getElementById(`cf-${Object.keys(er)[0]}`)?.focus();
       return;
     }
+    if (status === 'loading') return;
     setStatus('loading');
-    try {
-      const res = await submitInquiry(v);
-      if (!res.ok) throw new Error('failed');
-      setStatus('success');
-      setV(empty);
-    } catch {
+    const res = await submitInquiry(v);
+    if (!res.ok) {
+      setServerError(res.error);
       setStatus('error');
+      return;
     }
+    setStatus('success');
+    setV(empty);
   };
   const loading = status === 'loading';
   const a = (k) => ({ 'aria-invalid': !!errors[k], 'aria-describedby': `cf-${k}-err` });
@@ -87,7 +86,9 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} noValidate aria-busy={loading}>
+    <form onSubmit={submit} noValidate aria-busy={loading} className="relative">
+      {/* honeypot: hidden from people, filled by bots */}
+      <input type="text" name="website" value={v.website || ''} onChange={set('website')} tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
       <div className="grid gap-x-5 sm:grid-cols-2">
         <Field id="cf-name" label="Full name" required error={errors.name}><input id="cf-name" type="text" autoComplete="name" placeholder="Your name" value={v.name} onChange={set('name')} disabled={loading} className={`${inp} h-[52px]`} {...a('name')} /></Field>
         <Field id="cf-email" label="Work email" required error={errors.email}><input id="cf-email" type="email" autoComplete="email" placeholder="you@company.com" value={v.email} onChange={set('email')} disabled={loading} className={`${inp} h-[52px]`} {...a('email')} /></Field>
@@ -105,7 +106,7 @@ export default function ContactForm() {
       </label>
       <p id="cf-consent-err" role={errors.consent ? 'alert' : undefined} className={`text-[13px] text-[#d12a00] ${errors.consent ? 'mt-1.5' : ''}`}>{errors.consent}</p>
 
-      {status === 'error' && <p role="alert" className="mt-3 rounded-[8px] bg-[#fdeceb] px-4 py-3 text-[14px] text-[#9d1c0b]">Something went wrong sending your message. Please try again, or email us directly at {contact.email}.</p>}
+      {status === 'error' && <p role="alert" className="mt-3 rounded-[8px] bg-[#fdeceb] px-4 py-3 text-[14px] text-[#9d1c0b]">{serverError || 'Something went wrong sending your message.'} You can also email us directly at {contact.email}.</p>}
 
       <button type="submit" disabled={loading} className="group mt-5 flex h-[60px] w-full items-center justify-center gap-3 rounded-[8px] bg-rudrix-strong text-[17px] font-medium text-white transition-[background-color,transform] duration-300 hover:-translate-y-px hover:bg-[#b83300] active:translate-y-0 active:scale-[0.99] disabled:translate-y-0 disabled:opacity-80">
         {loading ? (<><span aria-hidden className="h-[18px] w-[18px] animate-spin rounded-full border-2 border-white/40 border-t-white" />Sending...</>) : (<>{f.cta}<ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden /></>)}

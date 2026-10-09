@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { inquiry } from '@/data/inquiry';
+import { postJson } from '@/lib/submitForm';
 
 const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 const empty = { name: '', email: '', phone: '', service: '', message: '', consent: false };
@@ -24,12 +25,13 @@ function Field({ id, label, required, error, className = '', compact = false, ch
   );
 }
 
-export default function ProjectForm({ idPrefix = '', compact = false }) {
+export default function ProjectForm({ idPrefix = '', compact = false, source = 'project-inquiry' }) {
   const px = idPrefix;
   const hh = compact ? 'h-[50px]' : 'h-[54px]';
   const [v, setV] = useState(empty);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState('idle'); // idle | loading | success
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [serverError, setServerError] = useState('');
 
   const set = (k) => (e) => {
     const val = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -47,17 +49,21 @@ export default function ProjectForm({ idPrefix = '', compact = false }) {
     return er;
   };
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
+    if (status === 'loading') return;
     const er = validate();
     setErrors(er);
     if (Object.keys(er).length) return;
     setStatus('loading');
-    // Front-end only: replace this timeout with a real API call (POST the `v` object) when a backend exists.
-    setTimeout(() => {
-      setStatus('success');
-      setV(empty);
-    }, 900);
+    const res = await postJson('/api/contact', { ...v, source });
+    if (!res.ok) {
+      setServerError(res.error);
+      setStatus('error');
+      return;
+    }
+    setStatus('success');
+    setV(empty);
   };
 
   if (status === 'success') {
@@ -76,7 +82,8 @@ export default function ProjectForm({ idPrefix = '', compact = false }) {
   const err = (k) => ({ 'aria-invalid': !!errors[k], 'aria-describedby': `${px}${k}-err` });
 
   return (
-    <form onSubmit={submit} noValidate>
+    <form onSubmit={submit} noValidate className="relative">
+      <input type="text" name="website" value={v.website || ''} onChange={set('website')} tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
       <div className={`grid gap-x-5 sm:grid-cols-2 ${compact ? 'gap-y-4' : ''}`}>
         <Field compact={compact} id={`${px}name`} label="Name" required error={errors.name}>
           <input id={`${px}name`} type="text" autoComplete="name" placeholder="Jane Smith" value={v.name} onChange={set('name')} disabled={loading} className={`${field} ${hh}`} {...err('name')} />
@@ -125,6 +132,8 @@ export default function ProjectForm({ idPrefix = '', compact = false }) {
           {errors.consent}
         </p>
       </div>
+
+      {status === 'error' && <p role="alert" className="mt-3 rounded-[8px] bg-[#fdeceb] px-4 py-3 text-[14px] text-[#9d1c0b]">{serverError || 'Something went wrong sending your message.'}</p>}
 
       <button
         type="submit"

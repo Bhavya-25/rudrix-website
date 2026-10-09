@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { m as motion, useReducedMotion } from 'framer-motion';
 import { footer } from '@/data/footer';
 import Reveal from './Reveal';
+import { postJson } from '@/lib/submitForm';
 
 const ease = [0.22, 1, 0.36, 1];
 const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
@@ -10,16 +11,24 @@ const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 export default function NewsletterFooter() {
   const reduce = useReducedMotion();
   const [email, setEmail] = useState('');
-  const [state, setState] = useState('idle'); // idle | loading | success | error
+  const [state, setState] = useState('idle'); // idle | loading | success | error (invalid email) | failed (server)
+  const [hp, setHp] = useState('');
 
-  const submit = (e) => {
+  const [message, setMessage] = useState('');
+
+  const submit = async (e) => {
     e.preventDefault();
+    if (state === 'loading') return;
     if (!emailOk(email)) return setState('error');
     setState('loading');
-    setTimeout(() => {
-      setState('success');
-      setEmail('');
-    }, 900); // frontend-only demo
+    const res = await postJson('/api/newsletter', { email, website: hp });
+    if (!res.ok) {
+      setMessage(res.error);
+      return setState('failed');
+    }
+    setMessage(res.status === 'subscribed' ? "You're on the list ✓" : res.status === 'duplicate' ? "You're already on our list ✓" : "Thanks, we've received your email ✓");
+    setState('success');
+    setEmail('');
   };
 
   return (
@@ -54,7 +63,8 @@ export default function NewsletterFooter() {
       </Reveal>
 
       <Reveal delay={0.3} className="mt-8 lg:mt-10">
-        <form onSubmit={submit} noValidate className="mx-auto max-w-[540px] lg:mx-0">
+        <form onSubmit={submit} noValidate className="relative mx-auto max-w-[540px] lg:mx-0">
+          <input type="text" name="website" value={hp} onChange={(e) => setHp(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
           <label htmlFor="newsletter-email" className="sr-only">Email address</label>
           <div className="flex gap-1.5 rounded-lg border border-[#4a4a4a] bg-[#242424] p-[3px] transition-[border-color,box-shadow] duration-300 focus-within:border-rudrix/80 focus-within:shadow-[0_0_0_4px_rgba(255,74,0,0.14)]">
             <input
@@ -78,17 +88,18 @@ export default function NewsletterFooter() {
               disabled={state === 'loading' || state === 'success'}
               className="h-12 min-w-[104px] shrink-0 rounded-[8px] sm:min-w-[124px] bg-rudrix px-5 text-[16px] font-medium text-[#050505] transition-all duration-300 hover:-translate-y-px hover:bg-[#ff6a2a] hover:shadow-[0_10px_22px_-10px_rgba(255,74,0,0.7)] active:scale-[0.98] disabled:translate-y-0 disabled:opacity-90"
             >
-              {state === 'loading' ? 'Sending…' : state === 'success' ? 'Subscribed ✓' : 'Subscribe'}
+              {state === 'loading' ? 'Sending…' : state === 'success' ? 'Done ✓' : 'Subscribe'}
             </button>
           </div>
           <p
             id="newsletter-status"
             role="status"
             aria-live="polite"
-            className={`mt-3 min-h-[20px] text-sm ${state === 'error' ? 'text-[#ff8a5c]' : 'text-[#999]'}`}
+            className={`mt-3 min-h-[20px] text-sm ${state === 'error' || state === 'failed' ? 'text-[#ff8a5c]' : 'text-[#999]'}`}
           >
             {state === 'error' && 'Please enter a valid email address.'}
-            {state === 'success' && "You're on the list ✓"}
+            {state === 'failed' && message}
+            {state === 'success' && message}
           </p>
         </form>
       </Reveal>

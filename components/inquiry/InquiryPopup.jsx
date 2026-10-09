@@ -107,7 +107,7 @@ export default function InquiryPopup() {
                 {inquiry.formHeading}
               </h2>
               <div className="mt-6">
-                <ProjectForm idPrefix="popup-" compact />
+                <ProjectForm idPrefix="popup-" compact source="inquiry-popup" />
               </div>
             </div>
           </motion.div>

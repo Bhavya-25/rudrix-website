@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
       <body>
         <MotionProvider>{children}</MotionProvider>
         <JsonLd data={{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Rudrix', url: siteUrl }} />
-        <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Organization', name: 'Rudrix', url: siteUrl, email: 'hello@rudrix.com', description: 'Software development agency building custom software, web applications and digital products.' }} />
+        <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Organization', name: 'Rudrix', url: siteUrl, email: 'info@rudrix.co.in', description: 'Software development agency building custom software, web applications and digital products.' }} />
       </body>
     </html>
   );

@@ -2,7 +2,7 @@
 export const site = {
   name: 'Rudrix',
   status: 'Available for New Projects',
-  email: 'hello@rudrix.com',
+  email: 'info@rudrix.co.in',
 };
 
 export const nav = [

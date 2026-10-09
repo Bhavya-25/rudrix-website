@@ -1189,7 +1189,7 @@ Yes. We can join an existing team, take over a product, or review it and recomme
 
 ### H2: Prefer email?
 
-> You can also write to us at `hello@rudrix.com`. Need an NDA before you share details? Just say so and we'll sign one first.
+> You can also write to us at `info@rudrix.co.in`. Need an NDA before you share details? Just say so and we'll sign one first.
 
 ### H2: Working with us internationally
 
