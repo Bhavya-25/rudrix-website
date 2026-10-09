@@ -3,7 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { faq } from '@/data/faq';
-import Link from 'next/link';
+import Cta from '@/components/Cta';
 
 export const metadata = pageMeta({
   title: 'Software Development FAQ: Costs, Timelines, Process | Rudrix',
@@ -43,7 +43,7 @@ export default function FaqPage() {
             <div className="rounded-[12px] bg-near-black p-8 text-white">
               <p className="text-[clamp(22px,2.6vw,32px)] font-medium leading-[1.2]">Still have a question?</p>
               <p className="mt-2 text-white/70">Tell us what you&apos;re working on and we&apos;ll point you to the next step.</p>
-              <Link href="/contact" className="mt-6 inline-flex min-h-[52px] items-center rounded-[8px] bg-rudrix-strong px-7 text-[16px] font-medium text-white">Start a Conversation</Link>
+              <Cta href="/contact" className="mt-6">Start a Conversation</Cta>
             </div>
           </div>
         </section>

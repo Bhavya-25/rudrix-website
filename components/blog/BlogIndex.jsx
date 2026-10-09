@@ -2,6 +2,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import Cta from '@/components/Cta';
 
 const PAGE = 6;
 const fmt = (d) => new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
@@ -58,9 +59,7 @@ export default function BlogIndex({ posts }) {
                   <Tag>{latest.category}</Tag>
                 </div>
                 <h2 className="mt-5 text-[clamp(26px,2.9vw,40px)] font-normal leading-[1.2] tracking-[-0.02em] text-[#1d1d1d]">{latest.title}</h2>
-                <Link href={`/blog/${latest.slug}`} className="group/b mt-8 inline-flex h-[60px] w-fit items-center gap-3 rounded-[2px] bg-[#ff4a00] px-8 text-[17px] text-white transition-colors hover:bg-[#e04100] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#171717]">
-                  Read Blog<ArrowRight className="h-[18px] w-[18px] transition-transform duration-300 group-hover/b:translate-x-1" aria-hidden />
-                </Link>
+                <Cta href={`/blog/${latest.slug}`} className="mt-8 w-fit">Read Blog</Cta>
               </div>
             </article>
           )}
@@ -101,9 +100,7 @@ export default function BlogIndex({ posts }) {
           <div className="relative px-[clamp(24px,4.2vw,58px)] py-[clamp(48px,6vw,80px)]">
             <h2 className="max-w-[640px] text-[clamp(32px,4vw,56px)] font-normal leading-[1.2] tracking-[-0.02em]">Let’s Create Something That Matters</h2>
             <p className="mt-6 max-w-[660px] text-[clamp(16px,1.3vw,19px)] leading-[1.65] text-white/90">Have a project in mind or looking for the right digital solution? Let’s talk about how we can turn your ideas into meaningful digital experiences.</p>
-            <Link href="/contact" className="group/t mt-[clamp(40px,6vw,90px)] inline-flex h-[56px] items-center gap-3 rounded-[2px] bg-white px-6 text-[18px] text-[#1d1d1d] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-white">
-              Talk To Us<ArrowRight className="h-[18px] w-[18px] transition-transform duration-300 group-hover/t:translate-x-1" aria-hidden />
-            </Link>
+            <Cta href="/contact" variant="light" className="mt-[clamp(40px,6vw,90px)]">Talk To Us</Cta>
           </div>
         </div>
       </section>

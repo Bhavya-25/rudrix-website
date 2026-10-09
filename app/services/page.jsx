@@ -4,6 +4,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { icons } from '@/components/capabilities/icons';
 import { services } from '@/data/services';
+import Cta from '@/components/Cta';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata = pageMeta({
   title: 'Software Development Services: Custom Software, Web, SaaS & Design | Rudrix',
@@ -47,7 +49,7 @@ export default function ServicesPage() {
                       <Icon className="h-6 w-6 text-ink" strokeWidth={1.6} aria-hidden />
                       <h3 className="mt-8 text-[19px] font-semibold leading-tight text-ink">{s.name}</h3>
                       <p className="mt-2 flex-1 text-[15px] leading-[1.55] text-slate2">{s.short}</p>
-                      <span className="mt-5 text-[14px] font-semibold text-rudrix-strong group-hover:underline">Learn more →</span>
+                      <span className="mt-5 text-[14px] font-semibold text-rudrix-strong group-hover:underline">Learn more <ArrowRight className="arw inline h-4 w-4 align-[-3px]" aria-hidden /></span>
                     </Link>
                   </li>
                 );
@@ -86,7 +88,7 @@ export default function ServicesPage() {
           <div className="mx-auto max-w-[1200px] rounded-[12px] bg-near-black p-8 text-white lg:p-12">
             <h2 className="text-[clamp(26px,3vw,40px)] font-medium leading-[1.15] tracking-[-0.02em]">Why Rudrix</h2>
             <p className="mt-4 max-w-[760px] text-[17px] leading-[1.6] text-white/80">You get one team that covers design and engineering, explains things in plain language and shows real progress regularly. We would rather recommend a smaller, cheaper route than sell you something you do not need.</p>
-            <Link href="/contact" className="mt-8 inline-flex min-h-[52px] items-center rounded-[8px] bg-rudrix-strong px-7 text-[16px] font-medium text-white">Tell us what you&apos;re building</Link>
+            <Cta href="/contact" className="mt-8">Tell us what you're building</Cta>
           </div>
         </section>
       </main>

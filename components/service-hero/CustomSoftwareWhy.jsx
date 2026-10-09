@@ -129,7 +129,7 @@ export default function CustomSoftwareWhy({ data }) {
           <motion.div {...rise(0.24)} className="lg:pb-2">
             <Link href={w.cta.href} className="group inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-rudrix-strong focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717]">
               <span className="border-b border-rudrix-strong/40 pb-0.5 transition-colors group-hover:border-rudrix-strong">{w.cta.label}</span>
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+              <ArrowRight className="h-4 w-4 arw" aria-hidden />
             </Link>
           </motion.div>
         </div>

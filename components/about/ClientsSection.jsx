@@ -171,7 +171,7 @@ export default function ClientsSection() {
           <motion.div {...rise(0.24)}>
             <Link href={clients.link.href} className="group inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-rudrix-strong">
               {clients.link.label}
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-[5px]" aria-hidden />
+              <ArrowRight className="h-4 w-4 arw" aria-hidden />
             </Link>
           </motion.div>
         </div>

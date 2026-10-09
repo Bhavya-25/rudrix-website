@@ -1,10 +1,10 @@
 'use client';
 import { useRef } from 'react';
-import Link from 'next/link';
 import { m as motion, useScroll, useTransform } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight } from 'lucide-react';
 import { customSoftwareHero as master } from '@/data/services';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -27,13 +27,8 @@ export default function CustomSoftwareHero({ data }) {
             </motion.h1>
             <motion.p {...rise(0.2)} className="mt-7 max-w-[560px] text-[clamp(16px,1.35vw,19px)] leading-[1.65] text-slate2">{h.text}</motion.p>
             <motion.div {...rise(0.3)} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-              <Link href={h.primary.href} className="group inline-flex min-h-[56px] items-center justify-center gap-4 rounded-[4px] bg-[linear-gradient(97deg,#e04a10_0%,#d63c00_100%)] px-7 text-[16px] font-medium text-white transition-[transform,filter] duration-300 hover:-translate-y-px hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717] motion-reduce:transition-none">
-                {h.primary.label}
-                <ArrowRight className="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-              </Link>
-              <Link href={h.secondary.href} className="inline-flex min-h-[56px] items-center justify-center rounded-[4px] border border-black/[0.08] bg-white px-7 text-[16px] font-medium text-ink shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-[transform,border-color] duration-300 hover:-translate-y-px hover:border-black/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717] motion-reduce:transition-none">
-                {h.secondary.label}
-              </Link>
+              <Cta href={h.primary.href}>{h.primary.label}</Cta>
+              <Cta href={h.secondary.href} variant="outline">{h.secondary.label}</Cta>
             </motion.div>
             <motion.ul {...rise(0.45)} aria-label="Focus areas" className="mt-[clamp(32px,4.5vw,64px)] flex flex-wrap items-center gap-x-5 gap-y-3 text-[11px] font-semibold tracking-[0.16em] text-[#4a4a47]">
               {h.proof.map((t) => <li key={t} className="flex items-center gap-2 uppercase"><span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#ff5a1f]" />{t}</li>)}

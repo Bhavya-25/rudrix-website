@@ -1,10 +1,10 @@
 'use client';
 import { useRef } from 'react';
-import Link from 'next/link';
 import { m as motion, useScroll, useTransform } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight } from 'lucide-react';
 import { clientStory as s } from '@/data/testimonials';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 const corners = ['left-0 top-0', 'right-0 top-0', 'bottom-0 left-0', 'bottom-0 right-0'];
@@ -58,10 +58,7 @@ export default function ClientStory() {
                 </p>
               </motion.div>
               <motion.div {...show(0.5)} className="mt-6">
-                <Link href={s.cta.href} className="group inline-flex min-h-[56px] items-center gap-3 rounded-[6px] bg-[#fafafa] px-6 text-[15px] font-medium text-[#111] shadow-[0_1px_2px_rgba(0,0,0,0.2)] transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transition-none">
-                  {s.cta.label}
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-[3px]" aria-hidden />
-                </Link>
+                <Cta href={s.cta.href} variant="light">{s.cta.label}</Cta>
               </motion.div>
             </div>
           </div>

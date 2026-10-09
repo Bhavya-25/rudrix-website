@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import CountUp from './CountUp';
 import { about } from '@/data/about';
+import Cta from '@/components/Cta';
 
 // About Us banner: dotted paper background, breadcrumb, big headline, intro + CTAs, dotted world map with pulsing pins.
 export default function AboutBanner() {
@@ -30,19 +31,13 @@ export default function AboutBanner() {
           <div>
             <p className="about-rise max-w-[46ch] text-[1.125rem] leading-[1.6] text-[#5b6068]" style={{ '--d': '0.24s' }}>{about.lede}</p>
             <div className="about-rise mt-6 flex flex-wrap items-center gap-x-[26px] gap-y-[14px]" style={{ '--d': '0.3s' }}>
-              <Link
-                href={about.primary.href}
-                className="group inline-flex h-[56px] items-center gap-3 rounded-[10px] bg-[linear-gradient(97deg,#d63c00_0%,#b83300_100%)] px-[26px] text-[16px] font-bold text-white shadow-[0_6px_16px_-9px_rgba(224,118,21,0.38)] transition-[filter] hover:brightness-110"
-              >
-                {about.primary.label}
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-              </Link>
+              <Cta href={about.primary.href}>{about.primary.label}</Cta>
               <Link
                 href={about.secondary.href}
                 className="group inline-flex min-h-[44px] items-center gap-2 border-b border-[rgba(21,24,28,0.32)] text-[16px] font-bold text-[#15181c] transition-colors hover:border-[#15181c] hover:text-rudrix-strong"
               >
                 {about.secondary.label}
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                <ArrowRight className="h-4 w-4 arw" aria-hidden />
               </Link>
             </div>
           </div>

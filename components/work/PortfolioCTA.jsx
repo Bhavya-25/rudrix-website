@@ -1,43 +1,33 @@
 'use client';
-import Link from 'next/link';
 import { m as motion } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
-import { ArrowRight, MapPin, Bell, Calendar, UtensilsCrossed, Smile, ShoppingBasket, ChevronDown } from 'lucide-react';
 import { portfolioCta as c } from '@/data/work';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 
-// HTML/CSS phone with a generic demo app screen (not a real client).
+// HTML/CSS phone frame with a portrait OneUp Creatives poster. The copy, logo and screens come from the OneUp project
+// (data/projects.js description and highlights + the project cover); the layout is a portrait composition made for this frame.
 function Phone() {
   return (
-    <div className="pcta-phone relative aspect-[1/2.07] w-full rounded-[13%/6.4%] bg-[#1c2a33] p-[2.6%] shadow-[0_30px_60px_-18px_rgba(0,0,0,0.65),0_0_0_2px_#8fa3ad_inset]" role="img" aria-label="Demo mobile app screen">
-      <div className="relative h-full w-full overflow-hidden rounded-[11%/5.4%] bg-[#fbeee6] text-[#1d1d1d]">
+    <div className="pcta-phone relative aspect-[1/2.07] w-full rounded-[13%/6.4%] bg-[#1c2a33] p-[2.6%] shadow-[0_30px_60px_-18px_rgba(0,0,0,0.65),0_0_0_2px_#8fa3ad_inset]" role="img" aria-label="OneUp Creatives project poster: Built to Engage. Designed to Convert.">
+      <div className="relative h-full w-full overflow-hidden rounded-[11%/5.4%] bg-[#0b0908] text-white" style={{ containerType: 'inline-size' }}>
+        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(120%_55%_at_85%_0%,rgba(255,90,0,0.38),transparent_60%),radial-gradient(90%_40%_at_0%_100%,rgba(255,90,0,0.22),transparent_65%)]" />
         <div aria-hidden className="absolute left-1/2 top-[2%] z-10 h-[3.3%] w-[28%] -translate-x-1/2 rounded-full bg-black" />
-        <div className="absolute inset-0 flex flex-col px-[5%] pt-[4.4%] text-[clamp(5px,0.78vw,10px)]" aria-hidden>
-          <div className="flex items-center justify-between font-semibold"><span>9:41</span><span className="flex gap-1"><i className="h-[0.8em] w-[1.5em] rounded-[2px] bg-black" /></span></div>
-          <div className="mt-[7%] flex items-center justify-between">
-            <div><p className="text-[0.85em] text-black/50">Your city</p><p className="flex items-center gap-1 font-semibold"><MapPin className="h-[1.2em] w-[1.2em] text-[#ff5a00]" />Downtown <ChevronDown className="h-[1em] w-[1em]" /></p></div>
-            <div className="flex items-center gap-[0.8em]"><Bell className="h-[1.6em] w-[1.6em]" /><span className="h-[2.6em] w-[2.6em] rounded-full bg-[#e8742a]" /></div>
-          </div>
-          <div className="mt-[5%] flex h-[24%] flex-col items-center justify-center rounded-[1em] bg-[linear-gradient(135deg,#1b1210,#4a2412)] text-center text-white">
-            <p className="text-[0.85em] tracking-wide text-white/70">TODAY’S PICK</p>
-            <p className="mt-[0.3em] text-[2.2em] font-extrabold leading-none">Fresh &amp; Fast</p>
-          </div>
-          <div className="mt-[4%] grid grid-cols-3 gap-[3%]">
-            {['Dine in', 'Pickup', 'Delivery'].map((t) => <div key={t} className="rounded-[0.8em] bg-white py-[1.4em] text-center text-[0.95em] font-semibold text-[#d3560f] shadow-sm">{t}</div>)}
-          </div>
-          <div className="mt-[4%] flex items-center justify-between rounded-full bg-[linear-gradient(90deg,#ff7a1a,#ff5a00)] px-[1em] py-[0.9em] font-semibold text-white"><span>Got a group coming?</span><span className="rounded-full bg-white/90 px-[0.8em] py-[0.3em] text-[0.85em] text-[#d3560f]">Plan it</span></div>
-          <div className="mt-[4%] rounded-[1em] bg-white p-[4%] shadow-sm">
-            <div className="flex items-center justify-between text-[0.9em]"><span className="text-black/60">Menu · Call</span><span className="text-[#d3560f]">Details →</span></div>
-            <div className="mt-[0.8em] flex items-center justify-between rounded-[0.7em] border border-black/10 px-[0.8em] py-[0.9em] font-semibold"><span>Downtown <span className="font-normal text-black/40">, City</span></span><ChevronDown className="h-[1.1em] w-[1.1em]" /></div>
-            <div className="mt-[0.9em] rounded-[0.8em] bg-[#ff5a00] py-[1em] text-center text-[1.05em] font-bold text-white">Reserve Table</div>
-          </div>
-          <p className="mt-[4%] text-[0.95em] font-semibold">Upcoming reservations</p>
-          <div className="absolute inset-x-[4%] bottom-[2.5%] flex items-center justify-around rounded-[1.2em] bg-white py-[0.9em] text-[0.7em] shadow-md">
-            {[[Calendar, 'Reserve', true], [UtensilsCrossed, 'Catering'], [Smile, 'Rewards'], [ShoppingBasket, 'Delivery']].map(([I, t, on]) => (
-              <span key={t} className={`flex flex-col items-center gap-[0.3em] ${on ? 'text-[#ff5a00]' : 'text-black/70'}`}><I className="h-[2em] w-[2em]" />{t}</span>
+        <div className="absolute inset-0 flex flex-col px-[7%] pt-[12%] text-[3.3cqw]" aria-hidden>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/projects/oneup-logo.webp" alt="" width={150} height={60} className="h-[4.6em] w-auto self-start mix-blend-screen" draggable={false} />
+          <span className="mt-[1.6em] self-start rounded-[0.4em] border border-[#ff5a00]/70 px-[0.9em] py-[0.55em] text-[0.62em] font-semibold tracking-[0.14em] text-[#ff7a2a]">FULL-STACK CREATIVE AGENCY WEBSITE</span>
+          <p className="mt-[1.1em] text-[2.9em] font-bold leading-[1.04] tracking-[-0.02em]">Built to Engage.<br /><span className="text-[#ff5a00]">Designed to Convert.</span></p>
+          <p className="mt-[1.1em] text-[0.82em] leading-[1.55] text-white/70">A sleek, high-performance creative agency website built with modern full-stack technologies, designed to convert visitors into clients.</p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/projects/oneup-screens.webp" alt="" width={599} height={592} loading="lazy" decoding="async" className="mt-[1.2em] w-full rounded-[0.9em] object-cover" draggable={false} />
+          <ul className="mt-[1.1em] grid grid-cols-2 gap-[0.6em] text-[0.74em] font-medium">
+            {['CMS Portfolio', 'Animated UI', 'Lead Gen', 'SEO Optimised'].map((t) => (
+              <li key={t} className="rounded-[0.7em] border border-white/10 bg-white/[0.06] px-[0.9em] py-[0.8em] text-center">{t}</li>
             ))}
-          </div>
+          </ul>
+          <p className="mt-auto pb-[6%] text-center text-[0.62em] tracking-[0.08em] text-white/50">Next.js · Tailwind CSS · Node.js · Sanity CMS</p>
         </div>
       </div>
     </div>
@@ -62,10 +52,7 @@ export default function PortfolioCTA() {
               </h2>
               <p className="mt-6 max-w-[520px] text-[clamp(15px,1.25vw,18px)] leading-[1.6] text-white/90">{c.text}</p>
             </div>
-            <Link href={c.cta.href} className="group inline-flex min-h-[58px] w-fit items-center gap-4 rounded-[4px] bg-[#fafafa] px-6 text-[17px] font-medium text-[#111] shadow-[0_1px_2px_rgba(0,0,0,0.12)] transition-[transform,box-shadow] duration-300 hover:-translate-y-[2px] hover:shadow-[0_10px_24px_-8px_rgba(0,0,0,0.5)] active:translate-y-0 active:scale-[0.98]">
-              {c.cta.label}
-              <ArrowRight className="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-            </Link>
+            <Cta href={c.cta.href} variant="light" className="w-fit">{c.cta.label}</Cta>
           </div>
         </motion.div>
 

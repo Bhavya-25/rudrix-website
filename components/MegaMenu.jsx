@@ -121,7 +121,7 @@ export default function MegaMenu({ label, index = 0 }) {
                 <span className="relative text-[12px] font-medium uppercase tracking-[0.08em] text-white/80">Let&apos;s talk</span>
                 <span className="relative mt-2 text-[22px] font-semibold leading-[1.2]">Have a product in mind?</span>
                 <span className="relative mt-5 inline-flex min-h-[44px] w-fit items-center gap-2 rounded-full bg-rudrix-strong px-5 text-[15px] font-medium">
-                  Start a conversation <ArrowRight className="h-4 w-4" aria-hidden />
+                  Start a conversation <ArrowRight className="h-4 w-4 transition-transform duration-[400ms] group-hover/promo:-rotate-45" aria-hidden />
                 </span>
               </Link>
             </div>

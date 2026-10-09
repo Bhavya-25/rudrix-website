@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { inquiry } from '@/data/inquiry';
 import { postJson } from '@/lib/submitForm';
+import Cta from '@/components/Cta';
 
 const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 const empty = { name: '', email: '', phone: '', service: '', message: '', consent: false };
@@ -135,14 +136,7 @@ export default function ProjectForm({ idPrefix = '', compact = false, source = '
 
       {status === 'error' && <p role="alert" className="mt-3 rounded-[8px] bg-[#fdeceb] px-4 py-3 text-[14px] text-[#9d1c0b]">{serverError || 'Something went wrong sending your message.'}</p>}
 
-      <button
-        type="submit"
-        disabled={loading}
-        className={`${compact ? 'mt-3 h-[56px]' : 'mt-4 h-[62px]'} flex w-full items-center justify-center gap-3 rounded-[8px] bg-rudrix-strong text-[18px] font-medium text-white transition-[background-color,transform] duration-300 hover:-translate-y-px hover:bg-[#b83300] disabled:translate-y-0 disabled:opacity-80`}
-      >
-        {loading && <span aria-hidden className="h-[18px] w-[18px] animate-spin rounded-full border-2 border-white/40 border-t-white" />}
-        {loading ? 'Sending...' : 'Book Strategy Call'}
-      </button>
+      <Cta type="submit" full loading={loading} className={compact ? 'mt-3' : 'mt-4'}>Book Strategy Call</Cta>
     </form>
   );
 }

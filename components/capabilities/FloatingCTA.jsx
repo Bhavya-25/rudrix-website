@@ -24,7 +24,7 @@ export default function FloatingCTA({ visible }) {
           </span>
           <span className="flex-1 text-[14px] leading-[1.3] text-white/85 sm:flex-none sm:pr-2 sm:text-[15px]">{cta.label}</span>
           <span aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-colors group-hover:bg-white/20">
-            <Arrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-[3px]" strokeWidth={2} />
+            <Arrow className="h-4 w-4 arw" strokeWidth={2} />
           </span>
         </motion.a>
       )}

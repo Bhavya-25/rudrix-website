@@ -1,10 +1,10 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
 import { AnimatePresence, LayoutGroup, m as motion } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight, Plus } from 'lucide-react';
 import { trust as t } from '@/data/ourProcess';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -80,10 +80,7 @@ export default function TrustArchitecture() {
           </motion.h2>
           <motion.p {...rise(0.16)} className="mt-6 max-w-[480px] text-[clamp(16px,1.3vw,19px)] leading-[1.7] text-[#686868]">{t.text}</motion.p>
           <motion.div {...rise(0.24)} className="mt-9">
-            <Link href={t.cta.href} className="group inline-flex min-h-[48px] items-center gap-3 rounded-[6px] bg-[#ff5a1f] px-6 text-[15px] font-semibold text-white transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#e84b12] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#171717] motion-reduce:transition-none">
-              {t.cta.label}
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-            </Link>
+            <Cta href={t.cta.href} size="sm">{t.cta.label}</Cta>
           </motion.div>
         </div>
 

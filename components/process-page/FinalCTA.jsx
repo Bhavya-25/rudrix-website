@@ -6,6 +6,7 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight, ArrowUpRight, Check } from 'lucide-react';
 import { finalCta as c } from '@/data/ourProcess';
 import { recognition } from '@/data/work';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -25,10 +26,7 @@ export default function FinalCTA() {
             <motion.h2 id="fc-title" {...show(0.1)} className="mt-6 text-[clamp(34px,4vw,62px)] font-normal leading-[1.04] tracking-[-0.035em]">{c.title[0]}<br />{c.title[1]}</motion.h2>
             <motion.p {...show(0.2)} className="mt-7 max-w-[500px] text-[clamp(16px,1.3vw,19px)] leading-[1.7] text-white/70">{c.text}</motion.p>
             <motion.div {...show(0.3)} className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <Link href={c.cta.href} className="group inline-flex min-h-[56px] items-center gap-6 rounded-[6px] bg-[#ff5a1f] px-7 text-[16px] font-semibold text-white transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#e84b12] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none">
-                {c.cta.label}
-                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden />
-              </Link>
+              <Cta href={c.cta.href}>{c.cta.label}</Cta>
               <Link href={c.secondary.href} className="group inline-flex min-h-[44px] items-center gap-2 text-[15px] text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
                 {c.secondary.label}<ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
               </Link>

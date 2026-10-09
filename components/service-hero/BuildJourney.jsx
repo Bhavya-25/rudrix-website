@@ -1,10 +1,10 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import { AnimatePresence, m as motion } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight, Check } from 'lucide-react';
 import { buildJourney as master } from '@/data/services';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -88,9 +88,7 @@ export default function BuildJourney({ data }) {
                 );
               })}
             </div>
-              <Link href={d.cta.href} className="group mt-6 inline-flex min-h-[48px] w-fit items-center gap-3 rounded-[6px] bg-[#ff5a1f] px-6 text-[15px] font-semibold text-white transition-[transform,filter] duration-300 hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717] motion-reduce:transition-none">
-                {d.cta.label}<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-              </Link>
+              <Cta href={d.cta.href} size="sm" className="mt-6 w-fit">{d.cta.label}</Cta>
             </div>
             <div id="bj-panel" role="tabpanel" aria-labelledby={`bj-tab-${active}`} className="grid gap-6">
               <Panel ph={ph} reduce={reduce} />
@@ -110,7 +108,7 @@ export default function BuildJourney({ data }) {
             </li>
           ))}
           <li>
-            <Link href={d.cta.href} className="group inline-flex min-h-[52px] w-full items-center justify-center gap-3 rounded-[6px] bg-[#ff5a1f] px-6 text-[15px] font-semibold text-white sm:w-auto">{d.cta.label}<ArrowRight className="h-4 w-4" aria-hidden /></Link>
+            <Cta href={d.cta.href} size="sm" className="w-full sm:w-auto">{d.cta.label}</Cta>
           </li>
         </ol>
       </div>

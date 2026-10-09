@@ -8,6 +8,7 @@ import ContactFAQ from './ContactFAQ';
 import ExpertiseIcon from '@/components/about/ExpertiseIcons';
 import RollCta from '@/components/about/RollCta';
 import { contact } from '@/data/contact';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -50,7 +51,7 @@ export default function ContactPageContent() {
             </h1>
             <motion.p {...rise(0.15)} className="mt-6 max-w-[560px] text-[18px] leading-[1.6] text-[#5b6068]">{h.text}</motion.p>
             <motion.div {...rise(0.25)} className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a href="#project-form" className="group inline-flex h-[56px] items-center gap-3 rounded-[10px] bg-[linear-gradient(97deg,#d63c00,#b83300)] px-[26px] text-[16px] font-bold text-white">Tell us about your project <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden /></a>
+              <Cta href="#project-form">Tell us about your project</Cta>
               <a href={`mailto:${contact.email}`} className="inline-flex min-h-[44px] items-center border-b border-black/30 text-[16px] font-bold text-[#15181c] hover:text-rudrix-strong">{contact.email}</a>
             </motion.div>
           </div>
@@ -130,7 +131,7 @@ export default function ContactPageContent() {
                   <div>
                     <h3 className="text-[22px] font-semibold leading-tight text-ink">{it.title}</h3>
                     <p className="mt-2 min-h-[72px] max-w-[320px] text-[15.5px] leading-[1.55] text-slate2">{it.text}</p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-rudrix-strong">Learn more <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden /></span>
+                    <span className="mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-rudrix-strong">Learn more <ArrowRight className="h-4 w-4 arw" aria-hidden /></span>
                   </div>
                 </Link>
               </motion.li>
@@ -171,7 +172,7 @@ export default function ContactPageContent() {
           <motion.p {...rise(0.12)} className="mt-6 max-w-[520px] text-[18px] leading-[1.6] text-white/70">{contact.cta.text}</motion.p>
           <motion.div {...rise(0.2)} className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
             <RollCta href={contact.cta.primary.href} label={contact.cta.primary.label} />
-            <Link href={contact.cta.secondary.href} className="group inline-flex min-h-[44px] items-center gap-2 border-b border-white/40 text-[16px] font-semibold text-white hover:border-white">{contact.cta.secondary.label}<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden /></Link>
+            <Link href={contact.cta.secondary.href} className="group inline-flex min-h-[44px] items-center gap-2 border-b border-white/40 text-[16px] font-semibold text-white hover:border-white">{contact.cta.secondary.label}<ArrowRight className="h-4 w-4 arw" aria-hidden /></Link>
           </motion.div>
         </div>
       </section>

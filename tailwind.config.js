@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./app/**/*.{js,jsx}', './components/**/*.{js,jsx}'],
+  // CTA variant classes are built dynamically in components/Cta.jsx (cta-${variant}), so keep them from being purged
+  safelist: ['cta-primary', 'cta-dark', 'cta-outline', 'cta-light', 'cta-sm', 'cta-full', 'cta-ripple', 'cta-spinner', 'cta-arrow'],
   theme: {
     extend: {
       colors: {

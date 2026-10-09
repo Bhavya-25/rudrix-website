@@ -1,10 +1,10 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import { m as motion } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight } from 'lucide-react';
 import { processHero as h } from '@/data/ourProcess';
+import Cta from '@/components/Cta';
 
 const SLIDE = { duration: 0.32, ease: [0.4, 0, 0.2, 1] };
 const n = h.steps.length;
@@ -89,10 +89,7 @@ export default function OurProcessHero() {
             </h1>
             <p className="mt-7 max-w-[650px] text-[clamp(16px,1.35vw,20px)] leading-[1.65] text-white/80">{h.text}</p>
             <div className="mt-9">
-              <Link href={h.cta.href} className="group inline-flex min-h-[56px] items-center gap-4 rounded-[3px] bg-[#fafafa] px-7 text-[16px] font-medium text-[#111] transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transition-none">
-                {h.cta.label}
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-[3px]" aria-hidden />
-              </Link>
+              <Cta href={h.cta.href} variant="light">{h.cta.label}</Cta>
             </div>
           </div>
 

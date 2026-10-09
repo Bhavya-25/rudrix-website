@@ -56,10 +56,10 @@ export default function BuildCTA({ data }) {
             <motion.p {...show(0.18)} className="mt-4 max-w-[560px] text-[clamp(15px,1.15vw,16px)] leading-[1.6] text-[#bdbdbd]">{d.text}</motion.p>
           </div>
           <motion.div {...show(0.26)}>
-            <Link href={d.cta.href} className="group relative inline-flex h-[clamp(54px,4.6vw,58px)] w-full items-center rounded-[4px] bg-[#ff5a00] pl-[clamp(20px,1.9vw,24px)] pr-[72px] text-[clamp(16px,1.3vw,17px)] font-normal text-white transition-[filter,transform] duration-300 hover:-translate-y-px hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none sm:w-auto sm:min-w-[250px]">
+            <Link href={d.cta.href} className="group relative inline-flex h-[clamp(54px,4.6vw,58px)] w-full items-center rounded-[8px] bg-rudrix-strong pl-[clamp(20px,1.9vw,24px)] pr-[72px] text-[clamp(16px,1.3vw,17px)] font-normal text-white transition-[filter,transform] duration-300 hover:-translate-y-px hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none sm:w-auto sm:min-w-[250px]">
               {d.cta.label}
               <span aria-hidden className="absolute right-[3px] top-1/2 grid h-[calc(100%-6px)] aspect-square -translate-y-1/2 place-items-center rounded-full bg-white/[0.24] transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none">
-                <ArrowRight className="h-[15px] w-[15px] transition-transform duration-300 group-hover:translate-x-[3px]" strokeWidth={2.6} />
+                <ArrowRight className="h-[15px] w-[15px] arw" strokeWidth={2.6} />
               </span>
             </Link>
           </motion.div>

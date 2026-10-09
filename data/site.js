@@ -44,14 +44,15 @@ export const hero = {
   // Images ride a slowly rotating ring; the top arc peeks into the banner.
   ring: { count: 16, secondsPerTurn: 30 },
   images: [
-    { src: '/images/hero-1.webp', alt: 'Engineer reviewing a tablet beside a server room' },
-    { src: '/images/hero-2.webp', alt: 'Laptop showing source code on a clean desk' },
-    { src: '/images/hero-3.webp', alt: 'Developers collaborating at laptops in an office' },
-    { src: '/images/hero-4.webp', alt: 'Analytics dashboard with performance charts' },
-    { src: '/images/hero-5.webp', alt: 'Engineer working on a laptop in a hardware lab' },
-    { src: '/images/hero-6.webp', alt: 'Team working together around laptops' },
-    { src: '/images/hero-7.webp', alt: 'Designer workspace with a laptop and notebook' },
-    { src: '/images/hero-8.webp', alt: 'Close-up of code on a monitor' },
+    // Generic product visuals (dashboards, SaaS, custom websites): illustrative designs, not client work.
+    { src: '/images/hero-ring/ring-1.webp', alt: 'SaaS analytics dashboard with revenue chart and key metrics' },
+    { src: '/images/hero-ring/ring-2.webp', alt: 'Dark finance dashboard with balance chart, allocation and recent activity' },
+    { src: '/images/hero-ring/ring-3.webp', alt: 'SaaS marketing website with headline, call-to-action buttons and a dashboard preview' },
+    { src: '/images/hero-ring/ring-4.webp', alt: 'Project management timeline with tasks and progress' },
+    { src: '/images/hero-ring/ring-5.webp', alt: 'Customer management table with status labels' },
+    { src: '/images/hero-ring/ring-6.webp', alt: 'Custom agency website with a bold headline and project cards' },
+    { src: '/images/hero-ring/ring-7.webp', alt: 'E-commerce admin dashboard with sales chart and recent orders' },
+    { src: '/images/hero-ring/ring-8.webp', alt: 'Website editor with a block library and page preview' },
   ],
 };
 

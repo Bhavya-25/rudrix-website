@@ -17,6 +17,7 @@ import BuildJourney from './service-hero/BuildJourney';
 import OtherServices from './service-hero/OtherServices';
 import FAQSection from './FAQSection';
 import ProjectInquirySection from './ProjectInquirySection';
+import Cta from '@/components/Cta';
 
 // One shared service page. The URL slug picks the service (data/services.js); data/serviceTemplate.js maps it onto the
 // sections below. Sections whose data a service does not have (tour, problems) are skipped instead of showing another service's copy.
@@ -47,7 +48,7 @@ export default function ServicePageView({ service }) {
               <p className="text-[clamp(24px,2.8vw,36px)] font-medium leading-[1.15] tracking-[-0.02em]">{service.cta.heading}</p>
               <p className="mt-2 text-[16px] text-white/70">Tell us what you are working on. We will help you figure out the next practical step.</p>
             </div>
-            <Link href="/contact" className="inline-flex min-h-[52px] w-fit shrink-0 items-center rounded-[8px] bg-rudrix-strong px-7 text-[16px] font-medium text-white">{service.cta.label}</Link>
+            <Cta href="/contact" size="sm" className="w-fit shrink-0">{service.cta.label}</Cta>
           </div>
           <div className="mt-10 border-t border-white/15 pt-6">
             <p className="text-[13px] uppercase tracking-[0.08em] text-white/60">Related services</p>

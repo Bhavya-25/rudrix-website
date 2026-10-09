@@ -1,11 +1,11 @@
 'use client';
 import { useRef, useState } from 'react';
-import Link from 'next/link';
 import { AnimatePresence, m as motion } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight, Plus } from 'lucide-react';
 import { engagement as e } from '@/data/ourProcess';
 import EngagementVisual from './EngagementVisuals';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 const N = e.models.length;
@@ -143,9 +143,7 @@ export default function EngagementModels() {
           </div>
           <div className="mt-6 flex flex-col gap-5 border-t border-[#292929] pt-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-[520px] text-[15px] leading-[1.6] text-[#969691]"><span className="text-[#f5f5f2]">{e.cta.title}</span> {e.cta.text}</p>
-            <Link href={e.cta.href} className="group inline-flex min-h-[52px] shrink-0 items-center gap-5 rounded-[6px] bg-[#ff5a1f] px-6 text-[15px] font-semibold text-white transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#e84b12] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none">
-              {e.cta.label}<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-            </Link>
+            <Cta href={e.cta.href} size="sm" className="shrink-0">{e.cta.label}</Cta>
           </div>
         </motion.div>
       </div>

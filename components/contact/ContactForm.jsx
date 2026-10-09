@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { contact } from '@/data/contact';
 import { postJson } from '@/lib/submitForm';
+import Cta from '@/components/Cta';
 
 const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 const empty = { name: '', email: '', phone: '', company: '', service: '', budget: '', timeline: '', message: '', consent: false };
@@ -108,9 +109,7 @@ export default function ContactForm() {
 
       {status === 'error' && <p role="alert" className="mt-3 rounded-[8px] bg-[#fdeceb] px-4 py-3 text-[14px] text-[#9d1c0b]">{serverError || 'Something went wrong sending your message.'} You can also email us directly at {contact.email}.</p>}
 
-      <button type="submit" disabled={loading} className="group mt-5 flex h-[60px] w-full items-center justify-center gap-3 rounded-[8px] bg-rudrix-strong text-[17px] font-medium text-white transition-[background-color,transform] duration-300 hover:-translate-y-px hover:bg-[#b83300] active:translate-y-0 active:scale-[0.99] disabled:translate-y-0 disabled:opacity-80">
-        {loading ? (<><span aria-hidden className="h-[18px] w-[18px] animate-spin rounded-full border-2 border-white/40 border-t-white" />Sending...</>) : (<>{f.cta}<ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden /></>)}
-      </button>
+      <Cta type="submit" full loading={loading} className="mt-5">{f.cta}</Cta>
     </form>
   );
 }

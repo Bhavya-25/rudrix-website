@@ -4,6 +4,7 @@ import { m as motion } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight, Check } from 'lucide-react';
 import { conversation as c } from '@/data/ourProcess';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -21,9 +22,7 @@ export default function ConversationCTA() {
             <motion.h2 id="cc-title" {...show(0.1)} className="mt-6 text-[clamp(34px,4.4vw,68px)] font-normal leading-[1.03] tracking-[-0.035em]">{c.title[0]}<br />{c.title[1]}</motion.h2>
             <motion.p {...show(0.2)} className="mt-7 max-w-[500px] text-[clamp(16px,1.3vw,19px)] leading-[1.7] text-white/70">{c.text}</motion.p>
             <motion.div {...show(0.3)} className="mt-9">
-              <Link href={c.cta.href} className="group inline-flex min-h-[56px] items-center gap-6 rounded-[6px] bg-[#ff5a1f] px-7 text-[16px] font-semibold text-white transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#e84b12] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none">
-                {c.cta.label}<ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden />
-              </Link>
+              <Cta href={c.cta.href}>{c.cta.label}</Cta>
             </motion.div>
             <motion.p {...show(0.38)} className="mt-6 max-w-[420px] text-[14px] leading-[1.6] text-white/45">{c.micro}</motion.p>
           </div>

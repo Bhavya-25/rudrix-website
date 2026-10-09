@@ -49,7 +49,7 @@ export default function CaseStudyShowcase({ data }) {
           </div>
           <motion.div {...rise(0.16)} className="lg:pb-2">
             <Link href={h.cta.href} className="group inline-flex min-h-[44px] items-center gap-2 whitespace-nowrap text-[17px] font-semibold text-rudrix-strong focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717]">
-              {h.cta.label}<ArrowRight className="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+              {h.cta.label}<ArrowRight className="h-[18px] w-[18px] arw" aria-hidden />
             </Link>
           </motion.div>
         </div>
@@ -72,7 +72,7 @@ export default function CaseStudyShowcase({ data }) {
                     {p.highlights.map((s) => <li key={s} className="rounded-[4px] bg-white/[0.16] px-[18px] py-2.5 text-[15px] text-white">{s}</li>)}
                   </ul>
                   <a href={p.url} target="_blank" rel="noopener noreferrer" className="group/v mt-8 inline-flex min-h-[44px] w-fit items-center gap-2 text-[17px] font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white lg:mt-auto lg:pt-10">
-                    View project<span className="sr-only"> {p.name} (opens in a new tab)</span><ArrowRight className="h-[18px] w-[18px] transition-transform duration-300 group-hover/v:translate-x-1" aria-hidden />
+                    View project<span className="sr-only"> {p.name} (opens in a new tab)</span><ArrowRight className="h-[18px] w-[18px] arw group-hover/v:-rotate-45" aria-hidden />
                   </a>
                 </div>
                 <div className="relative self-center overflow-hidden rounded-[8px] bg-black/20" style={{ aspectRatio: `${p.width || 1024} / ${p.height || 683}` }}>

@@ -1,9 +1,9 @@
 'use client';
-import Link from 'next/link';
 import { m as motion } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight } from 'lucide-react';
 import { workingProcess as wp } from '@/data/work';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 const corners = ['left-0 top-0', 'right-0 top-0', 'bottom-0 left-0', 'bottom-0 right-0'];
@@ -66,10 +66,7 @@ export default function WorkingProcess() {
             <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,rgba(38,58,22,0.88)_0%,rgba(38,58,22,0.45)_38%,transparent_70%)]" />
             <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-4 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-7">
               <p className="text-[clamp(20px,2vw,28px)] font-normal leading-[1.3] text-white">{wp.cta.lead[0]}<br />{wp.cta.lead[1]}</p>
-              <Link href={wp.cta.href} className="group/btn inline-flex min-h-[48px] items-center gap-3 rounded-[6px] bg-[#fafafa] px-5 text-[15px] font-medium text-[#111] shadow-[0_1px_2px_rgba(0,0,0,0.12)] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transition-none">
-                {wp.cta.label}
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-[#ffe6da]"><ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5" aria-hidden /></span>
-              </Link>
+              <Cta href={wp.cta.href} variant="light" size="sm">{wp.cta.label}</Cta>
             </div>
           </motion.div>
         </header>

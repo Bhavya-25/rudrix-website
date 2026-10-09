@@ -14,7 +14,7 @@ export function ProjectArticle({ p }) {
         </ul>
         <a href={p.url} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex min-h-[44px] w-fit items-center gap-2 text-[17px] font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
           View project<span className="sr-only"> {p.name} (opens in a new tab)</span>
-          <ChevronRight className="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+          <ChevronRight className="h-[18px] w-[18px] arw" aria-hidden />
         </a>
       </div>
       <div style={{ aspectRatio: `${p.width || 1024} / ${p.height || 683}` }} className="relative w-full overflow-hidden rounded-[12px] bg-black/25">

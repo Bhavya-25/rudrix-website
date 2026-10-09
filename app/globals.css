@@ -245,19 +245,8 @@ body {
 /* "Work With Us" CTA (measured on the reference): the arrow emits a soft orange ripple on a loop; on hover the label
    rolls up, the arrow turns to ↗ and the ripple stops. */
 @keyframes cta-ripple {
-  0% { box-shadow: 0 0 0 4px rgba(255, 74, 0, 0.16); }
-  70% { box-shadow: 0 0 0 30px rgba(255, 74, 0, 0); }
-  100% { box-shadow: 0 0 0 30px rgba(255, 74, 0, 0); }
-}
-.cta-roll .cta-ripple { animation: cta-ripple 2.6s ease-out infinite; }
-.cta-roll:hover .cta-ripple, .cta-roll:focus-visible .cta-ripple { animation: none; box-shadow: none; }
-.cta-roll .cta-track { transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1); }
-.cta-roll:hover .cta-track, .cta-roll:focus-visible .cta-track { transform: translateY(-50%); }
-.cta-roll .cta-arrow { transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1); }
-.cta-roll:hover .cta-arrow, .cta-roll:focus-visible .cta-arrow { transform: rotate(-45deg); }
-@media (prefers-reduced-motion: reduce) {
-  .cta-roll .cta-ripple { animation: none; }
-  .cta-roll .cta-track, .cta-roll .cta-arrow { transition: none; }
+  0% { box-shadow: 0 0 0 0 var(--rip, rgba(255, 255, 255, 0.2)); }
+  70%, 100% { box-shadow: 0 0 0 30px rgba(255, 255, 255, 0); }
 }
 
 /* About / Our standards: row hover (measured on the reference). White wipe from the right, title out,
@@ -297,7 +286,7 @@ body {
 
 /* Work CTA: banner with a phone that breaks out above and below it. */
 .pcta-banner { min-height: 440px; }
-.pcta-phone-wrap { width: min(62vw, 250px); margin-top: -150px; margin-bottom: -90px; }
+.pcta-phone-wrap { width: min(70vw, 280px); margin-top: -150px; margin-bottom: -90px; }
 @media (min-width: 1024px) {
   .pcta { --bh: clamp(380px, 33vw, 460px); }
   .pcta-banner { height: var(--bh); min-height: 0; }
@@ -344,3 +333,55 @@ body {
 
 /* hide the floating WhatsApp button while the mobile menu is open */
 html[data-menu='open'] .wa-fab { opacity: 0; pointer-events: none; visibility: hidden; }
+
+/* ================= CTA design system (shared by components/Cta.jsx) =================
+   One shape (8px radius), two heights (56px default, 48px "sm"), one font size per height, five variants.
+   Hover (mouse only): label rolls up to a duplicate line, arrow turns to a diagonal, fill shifts one step.
+   Touch: no hover styles at all (no sticky hover on iOS); a pressed (:active) state gives feedback instead. */
+@keyframes cta-spin { to { transform: rotate(360deg); } }
+@layer components {
+  .cta {
+    --cta-h: 56px;
+    position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    min-height: var(--cta-h); padding-inline: 28px; overflow: hidden; border: 1px solid transparent; border-radius: 8px;
+    font-size: 16px; font-weight: 500; line-height: 1; white-space: nowrap; text-decoration: none; cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.15s ease;
+    -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  }
+  .cta-sm { --cta-h: 48px; padding-inline: 22px; font-size: 15px; }
+  .cta-full { display: flex; width: 100%; }
+  .cta-primary { background: #d63c00; color: #fff; }
+  .cta-dark { background: #4a4a47; color: #fff; }
+  .cta-outline { background: transparent; color: #1d1d1d; border-color: rgba(214, 60, 0, 0.7); }
+  .cta-light { background: #fafafa; color: #111; }
+  .cta:active { transform: scale(0.98); }
+  .cta:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #171717; }
+  .cta:disabled, .cta[aria-disabled='true'] { opacity: 0.6; cursor: not-allowed; pointer-events: none; }
+  .cta-label { display: block; height: 1.25em; overflow: hidden; }
+  .cta-track { display: block; transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1); }
+  .cta-track > span { display: block; height: 1.25em; line-height: 1.25em; }
+  .cta-arrow { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1); }
+  /* arrow sits in a small tinted circle that emits a looping ripple at rest; on hover the ripple stops and the arrow turns to a diagonal */
+  .cta-ico { --ico: rgba(255, 255, 255, 0.2); --rip: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; flex-shrink: 0; border-radius: 9999px; background: var(--ico); animation: cta-ripple 2.6s ease-out infinite; }
+  .cta-outline .cta-ico, .cta-light .cta-ico { --ico: rgba(214, 60, 0, 0.12); --rip: rgba(214, 60, 0, 0.14); }
+  .arw { transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1); }
+  .cta-spinner { width: 18px; height: 18px; border-radius: 9999px; border: 2px solid rgba(255, 255, 255, 0.4); border-top-color: #fff; animation: cta-spin 0.8s linear infinite; }
+  @media (hover: hover) {
+    .cta:hover .cta-track { transform: translateY(-50%); }
+    .cta:hover .cta-arrow { transform: rotate(-45deg); }
+    .cta:hover .cta-ico { animation: none; box-shadow: none; }
+    .group:hover .arw, a:hover > .arw, button:hover > .arw { transform: rotate(-45deg); }
+    .cta-primary:hover { background: #b83300; }
+    .cta-dark:hover { background: #1d1d1d; }
+    .cta-outline:hover { background: rgba(214, 60, 0, 0.08); border-color: #d63c00; }
+    .cta-light:hover { background: #fff; }
+  }
+  .cta:focus-visible .cta-track { transform: translateY(-50%); }
+  .cta:focus-visible .cta-arrow { transform: rotate(-45deg); }
+  @media (prefers-reduced-motion: reduce) {
+    .cta, .cta-track, .cta-arrow { transition: none; }
+    .cta-ico { animation: none; }
+    .arw { transition: none; }
+    .cta:hover .cta-track, .cta:focus-visible .cta-track { transform: none; }
+  }
+}

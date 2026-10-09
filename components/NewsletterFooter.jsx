@@ -5,6 +5,7 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 import { footer } from '@/data/footer';
 import Reveal from './Reveal';
 import { postJson } from '@/lib/submitForm';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
@@ -84,13 +85,7 @@ export default function NewsletterFooter() {
               disabled={state === 'loading'}
               className="h-12 w-full min-w-0 flex-1 rounded-lg border-0 bg-transparent px-4 text-[16px] text-white outline-none placeholder:text-[#a0a0a0]"
             />
-            <button
-              type="submit"
-              disabled={state === 'loading' || state === 'success'}
-              className="h-12 min-w-[104px] shrink-0 rounded-[8px] sm:min-w-[124px] bg-rudrix px-5 text-[16px] font-medium text-[#050505] transition-all duration-300 hover:-translate-y-px hover:bg-[#ff6a2a] hover:shadow-[0_10px_22px_-10px_rgba(255,74,0,0.7)] active:scale-[0.98] disabled:translate-y-0 disabled:opacity-90"
-            >
-              {state === 'loading' ? 'Sending…' : state === 'success' ? 'Done ✓' : 'Subscribe'}
-            </button>
+            <Cta type="submit" size="sm" className="shrink-0 min-w-[104px] sm:min-w-[124px]" disabled={state === 'loading' || state === 'success'}>{state === 'loading' ? 'Sending…' : state === 'success' ? 'Done ✓' : 'Subscribe'}</Cta>
           </div>
           <p
             id="newsletter-status"

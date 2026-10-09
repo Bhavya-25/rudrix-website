@@ -41,7 +41,7 @@ export default function SoftwareTour({ data }) {
           </div>
           <motion.div {...rise(0.16)} className="lg:pb-2">
             <Link href={d.cta.href} className="group inline-flex min-h-[44px] items-center gap-2 whitespace-nowrap text-[17px] font-semibold text-rudrix-strong focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717]">
-              {d.cta.label}<ArrowRight className="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+              {d.cta.label}<ArrowRight className="h-[18px] w-[18px] arw" aria-hidden />
             </Link>
           </motion.div>
         </div>

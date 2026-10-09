@@ -5,6 +5,7 @@ import { m as motion, useInView } from 'framer-motion';
 import { useReducedMotion } from '@/lib/useReducedMotion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { customSoftwareCapabilities as master } from '@/data/services';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 const O = '#ff5a1f';
@@ -155,7 +156,7 @@ export default function CustomSoftwareCapabilities({ data }) {
             <motion.div {...rise(0.24)} className="mt-8">
               <Link href={c.cta.href} className="group inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-rudrix-strong focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#171717]">
                 <span className="border-b border-rudrix-strong/40 pb-0.5 transition-colors group-hover:border-rudrix-strong">{c.cta.label}</span>
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                <ArrowRight className="h-4 w-4 arw" aria-hidden />
               </Link>
             </motion.div>
           </div>
@@ -171,9 +172,7 @@ export default function CustomSoftwareCapabilities({ data }) {
 
         <motion.div {...rise(0.1)} className="mt-[clamp(32px,4vw,56px)] flex flex-col gap-5 rounded-[18px] bg-[#171717] px-[clamp(22px,3vw,40px)] py-7 text-white sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[clamp(18px,1.8vw,24px)] font-normal tracking-[-0.02em]">{c.closing.text}</p>
-          <Link href={c.closing.href} className="group inline-flex min-h-[48px] w-fit items-center gap-3 rounded-[6px] bg-[#ff5a1f] px-6 text-[15px] font-semibold text-white transition-[transform,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#e84b12] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none">
-            {c.closing.label}<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
-          </Link>
+          <Cta href={c.closing.href} size="sm" className="w-fit">{c.closing.label}</Cta>
         </motion.div>
       </div>
     </section>

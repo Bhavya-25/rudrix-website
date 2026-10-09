@@ -6,6 +6,7 @@ import MegaMenu from './MegaMenu';
 import WhyMenu from './WhyMenu';
 import { ChevronDown } from 'lucide-react';
 import { nav, site, whyMenu, servicesMenu } from '@/data/site';
+import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -76,13 +77,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center">
-          <a
-            href="/contact"
-            className="hero-pop hidden min-h-[52px] items-center rounded-full bg-slate2 px-6 text-[15px] font-medium text-white shadow-[0_10px_24px_-10px_rgba(0,0,0,0.45)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-ink md:inline-flex"
-            style={{ '--d': '0.55s' }}
-          >
-            Contact
-          </a>
+          <Cta href="/contact" size="sm" className="hero-pop hidden md:inline-flex" style={{ '--d': '0.55s' }}>Contact</Cta>
           <button
             type="button"
             onClick={() => setOpen(true)}
@@ -187,13 +182,7 @@ export default function Header() {
               <span className="inline-flex items-center gap-2.5 text-sm text-white/70">
                 <span className="live-dot h-2 w-2 rounded-full bg-live" /> {site.status}
               </span>
-              <a
-                href="/contact"
-                onClick={() => setOpen(false)}
-                className="flex min-h-[56px] items-center justify-center rounded-full bg-rudrix text-base font-semibold text-white"
-              >
-                Start a Project →
-              </a>
+              <Cta href="/contact" onClick={() => setOpen(false)} full>Start a Project</Cta>
             </div>
           </motion.div>
         )}
