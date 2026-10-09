@@ -18,24 +18,55 @@ export const mosaicRows = [
   { dir: 'right', speed: 92, tiles: [i('/images/why-us-engineering.webp', 1.1), c('dark', 0.9), i('/images/hero-6.webp', 1.2), i('/images/values/02-build-with-purpose.webp', 0.8, '50% 25%'), l(1.2), i('/images/results/t2.webp', 1.2), i('/images/hero-7.webp', 1.15), c('orange', 0.9), i('/images/hero-8.webp', 1.15), l(1)] },
 ];
 
-// UPWORK REVIEWS — PLACEHOLDER DATA. No real Rudrix Upwork reviews or rating were supplied yet.
-// Replace each entry with an approved review (and set `placeholder: false`). While `rating` is null the
-// card shows no score, and the badge shows "Client Reviews" instead of a number.
+// VERIFIED CLIENT TESTIMONIALS (single source of truth).
+// `screenshot` = original Upwork screenshot, shown ONLY on the Testimonials page. `review` = verbatim client text, shown as text
+// everywhere else; null means the screenshot has no client comment, so no text card is made for it. Nothing here is invented.
+export const clientTestimonials = [
+  {
+    id: 'riyaz-samad', name: 'Riyaz Samad', location: 'Germany', role: 'Germany',
+    project: 'Full Stack Development for Cake Configurator', rating: 5,
+    review: 'Very happy, Very fast communication and professional work',
+    screenshot: '/images/testimonials/riyaz-samad-upwork.webp', width: 1492, height: 1418,
+    alt: 'Upwork testimonial from Riyaz Samad for Cake Configurator development.',
+  },
+  {
+    id: 'enrico', name: 'Enrico', location: 'Italy', role: 'Italy',
+    project: 'UI/UX Designer & Front-End Specialist for AI Startup (React + Django)', rating: 5,
+    // Verbatim second half of the client's review. The full review is visible in the screenshot.
+    review: 'Bhavya was always professional, collaborative, and supportive throughout the project, and I would gladly consider working with him again for future developments under different conditions.',
+    screenshot: '/images/testimonials/enrico-upwork.webp', width: 1486, height: 1080,
+    alt: 'Upwork testimonial from Enrico for the UI/UX Designer and Front-End Specialist for AI Startup project.',
+  },
+  {
+    id: 'vittorio', name: 'Vittorio', location: 'Italy', role: 'Italy',
+    project: null, rating: 5,
+    review: 'Great working with Bhavya, very proactive in trying to find concrete solutions.',
+    screenshot: '/images/testimonials/vittorio-upwork.webp', width: 1292, height: 152,
+    alt: 'Upwork testimonial from Vittorio: 5.0 rating, May 11, 2026.',
+  },
+  {
+    id: 'cheyanne-harris', name: 'Cheyanne Harris', location: 'Texas, USA', role: 'Texas, USA',
+    project: 'Web Designer/Developer', rating: 5,
+    review: null, // the screenshot has the client's 5.0 rating but no written client comment (the comment shown there is the freelancer's)
+    summary: 'Rated 5.0 on Upwork for Web Designer/Developer.',
+    screenshot: '/images/testimonials/cheyanne-harris-upwork.webp', width: 1550, height: 1200,
+    alt: 'Upwork testimonial from Cheyanne Harris for a web designer and developer project.',
+  },
+  {
+    id: 'shubham-kukkar', name: 'Shubham Kukkar', location: null, role: 'CEO, OneUp Creatives',
+    project: 'Logo Designing and Website Designing', rating: 5,
+    review: 'I thoroughly enjoyed collaborating with Bhavya on our website redesign. His design skills are exceptional, and the final product exceeded my expectations.',
+    screenshot: '/images/testimonials/shubham-kukkar-upwork.webp', width: 1502, height: 1596,
+    alt: 'Upwork testimonial from Shubham Kukkar, CEO of OneUp Creatives, for logo and website design.',
+  },
+];
+
 export const upworkReviews = {
   eyebrow: 'UPWORK REVIEWS',
   title: ['Exceptional Work', 'Speaks For Itself'],
-  // Switch to "Verified feedback from clients we've worked with on Upwork—" once real reviews are added.
-  text: 'Client feedback from projects delivered through Upwork—focused on development quality, communication, reliability, and delivering work that solves real business problems.',
-  rating: null, // e.g. '4.9' once Rudrix's real Upwork rating is confirmed
-  initial: 4,
-  items: [
-    { id: 'u1', placeholder: true, title: 'Frontend Development Integration and Support', date: 'Project dates', rate: '$XX/hr', hours: null, earned: '$X,XXX earned', rating: null, client: 'Verified Upwork Client', review: 'Placeholder review — replace with the client’s actual approved feedback from Upwork.', tags: ['Professional', 'Clear Communicator', 'Committed to Quality', 'Reliable', 'Detail Oriented'] },
-    { id: 'u2', placeholder: true, title: 'Shopify Development & Optimization', date: 'Project dates', rate: '$XX/hr', hours: 'XXX hours', earned: '$X,XXX earned', rating: null, client: 'E-commerce Business Owner', review: 'Placeholder review — replace with the client’s actual approved feedback from Upwork.', tags: ['Responsive', 'Reliable'] },
-    { id: 'u3', placeholder: true, title: 'Full-Stack Web Application Build', date: 'Project dates', rate: '$XX/hr', hours: 'XXX hours', earned: '$X,XXX earned', rating: null, client: 'Founder, SaaS Company', review: 'Placeholder review — replace with the client’s actual approved feedback from Upwork.', tags: ['Professional', 'Quality Focused', 'Great Communicator', 'On Time'] },
-    { id: 'u4', placeholder: true, title: 'Mobile App UI Design & Development', date: 'Project dates', rate: '$XX/hr', hours: null, earned: '$X,XXX earned', rating: null, client: 'Verified Upwork Client', review: 'Placeholder review — replace with the client’s actual approved feedback from Upwork.', tags: ['Creative', 'Detail Oriented', 'Reliable'] },
-    { id: 'u5', placeholder: true, title: 'Website Redesign and Performance Fixes', date: 'Project dates', rate: '$XX/hr', hours: 'XXX hours', earned: '$X,XXX earned', rating: null, client: 'Verified Upwork Client', review: 'Placeholder review — replace with the client’s actual approved feedback from Upwork.', tags: ['Professional', 'Responsive', 'Quality Focused'] },
-    { id: 'u6', placeholder: true, title: 'API Integration and Backend Support', date: 'Project dates', rate: '$XX/hr', hours: null, earned: '$X,XXX earned', rating: null, client: 'Founder, Startup', review: 'Placeholder review — replace with the client’s actual approved feedback from Upwork.', tags: ['Reliable', 'Clear Communicator', 'On Time', 'Professional', 'Detail Oriented', 'Flexible'] },
-  ],
+  text: 'Verified feedback from clients we have worked with on Upwork, shown exactly as it appears on their review pages. Select a review to read it in full size.',
+  rating: null,
+  items: clientTestimonials,
 };
 
 // CLIENT STORY — PLACEHOLDER CONTENT. No approved Rudrix client story/metric was supplied yet.

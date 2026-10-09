@@ -109,7 +109,7 @@ export default function TestimonialCard() {
             transition={{ duration: reduce ? 0.15 : 0.6, ease }}
           >
             <blockquote className="max-w-[980px] text-[clamp(24px,2.7vw,44px)] font-semibold leading-[1.12] tracking-[-0.03em]">
-              “{t.quote}”
+              {t.quoted === false ? t.quote : `“${t.quote}”`}
             </blockquote>
             <p className="mt-8 text-[16px] font-medium lg:mt-10">{t.name}</p>
             <p className="mt-0.5 text-[16px] text-white/65">{t.role}</p>

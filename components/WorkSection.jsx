@@ -11,7 +11,7 @@ export default function WorkSection() {
   const reduce = useReducedMotion();
   const stack = useRef(null);
   const { scrollYProgress } = useScroll({ target: stack, offset: ['start start', 'end end'] });
-  const projects = selectedProjects.projects.slice(0, work.projects.length);
+  const projects = selectedProjects.projects.slice(0, work.count);
   const n = projects.length;
   const [wide, setWide] = useState(false);
   useEffect(() => {

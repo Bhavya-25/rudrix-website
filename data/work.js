@@ -1,57 +1,11 @@
+import { projects as realProjects } from './projects';
+
 export const work = {
   heading: 'Recent work',
   intro:
-    'Concept projects that show how we approach product design and development. Client case studies are added as projects are approved.',
-  projects: [
-    {
-      number: '01',
-      title: 'Finora',
-      description:
-        'A complete digital banking experience designed to make everyday financial management simpler, faster, and easier to understand across web and mobile.',
-      client: 'Finora',
-      services: ['Product Design', 'Web Development', 'Mobile Development'],
-      image: '/images/work/01-finora.webp',
-      alt: 'Mobile banking app on a smartphone held in one hand',
-      position: '50% 50%',
-      href: '#contact',
-    },
-    {
-      number: '02',
-      title: 'HealthSync',
-      description:
-        'A connected healthcare platform that brings patients, providers, and essential health information into one simple and intuitive digital experience.',
-      client: 'HealthSync',
-      services: ['UI/UX Design', 'Web Development', 'Backend Development'],
-      image: '/images/work/02-healthsync.webp',
-      alt: 'Doctor in a white coat using a healthcare app on a phone',
-      position: '50% 50%',
-      href: '#contact',
-    },
-    {
-      number: '03',
-      title: 'ScaleCommerce',
-      description:
-        'A scalable commerce platform built to streamline product management, improve customer journeys, and give growing brands a stronger foundation for digital sales.',
-      client: 'ScaleCommerce',
-      services: ['Shopify Development', 'Custom Development', 'Conversion Optimization'],
-      image: '/images/work/03-scalecommerce.webp',
-      alt: 'Customer paying with a phone at a modern retail counter',
-      position: '60% 50%',
-      href: '#contact',
-    },
-    {
-      number: '04',
-      title: 'NexaFlow',
-      description:
-        'A workflow platform that replaces fragmented processes with a faster, clearer and more connected experience for modern teams.',
-      client: 'NexaFlow',
-      services: ['Product Design', 'SaaS Development', 'Cloud Integration'],
-      image: '/images/work/04-nexaflow.webp',
-      alt: 'SaaS analytics dashboard open on a laptop',
-      position: '50% 45%',
-      href: '#contact',
-    },
-  ],
+    'A selection of real websites and platforms we have built, from CRMs and trading platforms to pharmacy and agency sites.',
+  // Home shows the first projects of the shared list (data/projects.js).
+  count: 4,
 };
 
 // Work page hero: four layered project visuals (back to front), each with its own outline colour.
@@ -78,7 +32,7 @@ export const workStats = [
 
 // Selected Projects (Work page). These four are CONCEPT projects (not real clients): replace the copy, images and
 // links with approved case studies as they become available. No results or metrics are claimed.
-export const selectedProjects = {
+export const conceptCases = {
   eyebrow: 'SELECTED PROJECTS',
   title: 'Work That Speaks for Itself.',
   text: "Explore digital experiences we've crafted across industries, from e-commerce to enterprise.",
@@ -160,4 +114,13 @@ export const workingProcess = {
     { number: '05', title: 'QA & Testing', description: 'We test across devices, browsers, and key user journeys before launch.' },
     { number: '06', title: 'Launch & Support', description: 'We launch with care, then stay close for improvements, fixes, and ongoing support.' },
   ],
+};
+
+// Work page "Selected Projects": real projects from data/projects.js (shared with the Home work stack).
+export const selectedProjects = {
+  eyebrow: conceptCases.eyebrow,
+  title: conceptCases.title,
+  text: 'A selection of the websites and platforms we have built.',
+  empty: conceptCases.empty,
+  projects: realProjects,
 };

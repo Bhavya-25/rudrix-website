@@ -1,7 +1,7 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { m as motion, useReducedMotion } from 'framer-motion';
-import { Star } from 'lucide-react';
+import { Star, X } from 'lucide-react';
 import { upworkReviews as u } from '@/data/testimonials';
 
 const ease = [0.22, 1, 0.36, 1];
@@ -10,51 +10,63 @@ const corners = ['left-0 top-0', 'right-0 top-0', 'bottom-0 left-0', 'bottom-0 r
 
 function Stars({ rating }) {
   return (
-    <span className="flex items-center gap-2" aria-label={rating ? `Rated ${rating} out of 5` : 'Rating not yet added'}>
+    <span className="flex items-center gap-2" aria-label={`Rated ${rating} out of 5`}>
       <span className="flex gap-[3px]" aria-hidden>
-        {[0, 1, 2, 3, 4].map((k) => <Star key={k} className={`h-[13px] w-[13px] ${rating ? 'fill-[#e8710a] text-[#e8710a]' : 'fill-[#d6d6d3] text-[#d6d6d3]'}`} />)}
+        {[0, 1, 2, 3, 4].map((k) => <Star key={k} className="h-[13px] w-[13px] fill-[#e8710a] text-[#e8710a]" />)}
       </span>
-      <span className="text-[13px] text-[#444]">{rating || '—'}</span>
+      <span className="text-[13px] text-[#444]">{Number(rating).toFixed(1)}</span>
     </span>
   );
 }
 
-function Card({ r, i, reduce }) {
+function Lightbox({ r, onClose }) {
+  useEffect(() => {
+    const k = (e) => e.key === 'Escape' && onClose();
+    document.addEventListener('keydown', k);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.removeEventListener('keydown', k); document.body.style.overflow = prev; };
+  }, [onClose]);
+  return (
+    <div role="dialog" aria-modal="true" aria-label={`Upwork review from ${r.name}`} className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 p-3 sm:p-8" onClick={onClose}>
+      <div className="relative max-h-full max-w-[860px] overflow-auto rounded-[16px] bg-white" onClick={(e) => e.stopPropagation()}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={r.screenshot} alt={r.alt} width={r.width} height={r.height} className="block h-auto w-full" />
+        <button type="button" autoFocus onClick={onClose} aria-label="Close review" className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full bg-black/80 text-white"><X className="h-5 w-5" aria-hidden /></button>
+      </div>
+    </div>
+  );
+}
+
+function Card({ r, i, reduce, onOpen }) {
   return (
     <motion.article
       initial={reduce ? false : { opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '0px 0px -8% 0px' }}
       transition={{ duration: reduce ? 0.2 : 0.7, delay: reduce ? 0 : (i % 2) * 0.1, ease }}
-      className="group rounded-[16px] border bg-white p-6 shadow-[0_2px_10px_-6px_rgba(0,0,0,0.12)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(20,196,82,0.45)] sm:p-8 lg:p-[34px] motion-reduce:transition-none"
+      className="group rounded-[16px] border bg-white p-3 shadow-[0_2px_10px_-6px_rgba(0,0,0,0.12)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(20,196,82,0.45)] sm:p-4 motion-reduce:transition-none"
       style={{ borderColor: GREEN, borderLeftWidth: 3 }}
     >
-      <h3 className="text-[clamp(21px,2vw,30px)] font-normal leading-[1.15] tracking-[-0.02em] text-[#1d1d1d]">{r.title}</h3>
-      <div className="mt-5 grid gap-x-6 gap-y-2 text-[14px] text-[#1d1d1d] sm:grid-cols-2">
-        <p>{r.date}</p>
-        <div className="flex flex-col gap-2.5">
-          {r.rate && <p>{r.rate}</p>}
-          {r.hours && <p>{r.hours}</p>}
-          {r.earned && <p>{r.earned}</p>}
+      <button type="button" onClick={() => onOpen(r)} aria-label={`Open the full Upwork review from ${r.name}`} className="block w-full cursor-zoom-in overflow-hidden rounded-[10px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#14c452]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={r.screenshot} alt={r.alt} width={r.width} height={r.height} loading="lazy" decoding="async" draggable={false} className="block h-auto w-full" />
+      </button>
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-2 pb-1 pt-4">
+        <div>
+          <p className="text-[16px] font-medium text-[#1d1d1d]">{r.name}</p>
+          <p className="text-[13px] text-[#6b6b68]">{[r.location, r.role !== r.location ? r.role : null].filter(Boolean).join(' · ')}</p>
         </div>
+        <Stars rating={r.rating} />
       </div>
-      <p className="mt-7 text-[clamp(17px,1.4vw,20px)] text-[#1d1d1d]">Client’s review</p>
-      <div className="mt-3"><Stars rating={r.rating} /></div>
-      <blockquote className="mt-3.5 text-[14.5px] italic leading-[1.7] text-[#2a2a2a]">“{r.review}”</blockquote>
-      <p className="mt-3 text-[13px] text-[#6b6b68]">— {r.client}</p>
-      <ul className="mt-5 flex flex-wrap gap-2" aria-label="Review attributes">
-        {r.tags.slice(0, 5).map((t) => <li key={t} className="rounded-full bg-[#f1f1ef] px-3 py-1.5 text-[11.5px] text-[#444]">{t}</li>)}
-        {r.tags.length > 5 && <li className="rounded-full bg-[#f1f1ef] px-3 py-1.5 text-[11.5px] text-[#444]">+{r.tags.length - 5}</li>}
-      </ul>
-      {r.placeholder && <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.12em] text-[#b0b0ad]">Placeholder — not a real review</p>}
     </motion.article>
   );
 }
 
 export default function UpworkReviews() {
   const reduce = useReducedMotion();
-  const [shown, setShown] = useState(u.initial);
-  const list = u.items.slice(0, shown);
+  const [open, setOpen] = useState(null);
+  const list = u.items;
   const left = list.filter((_, i) => i % 2 === 0);
   const right = list.filter((_, i) => i % 2 === 1);
   const rise = (d = 0) => ({ initial: reduce ? false : { opacity: 0, y: 22 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '0px 0px -8% 0px' }, transition: { duration: reduce ? 0.2 : 0.7, delay: reduce ? 0 : d, ease } });
@@ -88,15 +100,11 @@ export default function UpworkReviews() {
         <div aria-hidden className="mt-[clamp(36px,4vw,64px)] h-px w-full bg-black/10" />
 
         <div className="mt-[clamp(32px,4vw,60px)] grid items-start gap-6 lg:grid-cols-2 lg:gap-[clamp(28px,3.4vw,48px)]">
-          <div className="flex flex-col gap-6 lg:gap-[clamp(28px,3.4vw,48px)]">{left.map((r, i) => <Card key={r.id} r={r} i={i} reduce={reduce} />)}</div>
-          <div className="flex flex-col gap-6 lg:mt-[clamp(60px,6vw,88px)] lg:gap-[clamp(28px,3.4vw,48px)]">{right.map((r, i) => <Card key={r.id} r={r} i={i + 1} reduce={reduce} />)}</div>
+          <div className="flex flex-col gap-6 lg:gap-[clamp(28px,3.4vw,48px)]">{left.map((r, i) => <Card key={r.id} r={r} i={i} reduce={reduce} onOpen={setOpen} />)}</div>
+          <div className="flex flex-col gap-6 lg:mt-[clamp(60px,6vw,88px)] lg:gap-[clamp(28px,3.4vw,48px)]">{right.map((r, i) => <Card key={r.id} r={r} i={i + 1} reduce={reduce} onOpen={setOpen} />)}</div>
         </div>
 
-        {shown < u.items.length && (
-          <div className="mt-12 flex justify-center">
-            <button type="button" onClick={() => setShown(u.items.length)} className="min-h-[52px] rounded-[8px] border border-[#1d1d1d] px-7 text-[15px] font-medium text-[#1d1d1d] transition-colors hover:bg-[#1d1d1d] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#14c452]">View More Reviews</button>
-          </div>
-        )}
+        {open && <Lightbox r={open} onClose={() => setOpen(null)} />}
       </div>
     </section>
   );

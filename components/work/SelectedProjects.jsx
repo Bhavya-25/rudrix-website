@@ -24,10 +24,8 @@ function Filter({ id, label, value, onChange, options }) {
 export default function SelectedProjects() {
   const reduce = useReducedMotion();
   const [industry, setIndustry] = useState('All');
-  const [service, setService] = useState('All');
-  const industries = useMemo(() => ['All', ...new Set(sp.projects.map((p) => p.industry))], []);
-  const services = useMemo(() => ['All', ...new Set(sp.projects.flatMap((p) => p.services))], []);
-  const list = sp.projects.filter((p) => (industry === 'All' || p.industry === industry) && (service === 'All' || p.services.includes(service)));
+    const industries = useMemo(() => ['All', ...new Set(sp.projects.map((p) => p.category))], []);
+  const list = sp.projects.filter((p) => (industry === 'All' || p.category === industry));
   const rise = (d = 0) => ({ initial: reduce ? false : { opacity: 0, y: 22 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '0px 0px -8% 0px' }, transition: { duration: 0.7, delay: d, ease } });
 
   return (
@@ -44,10 +42,9 @@ export default function SelectedProjects() {
           <motion.p {...rise(0.16)} className="max-w-[440px] text-[clamp(15px,1.25vw,17px)] leading-[1.7] text-[#5f5f5c] lg:pb-3">{sp.text}</motion.p>
         </div>
 
-        <motion.div {...rise(0.1)} className="mt-10 flex flex-wrap gap-5 sm:gap-6" role="group" aria-label="Filter projects">
-          <Filter id="f-industry" label="Industries" value={industry} onChange={setIndustry} options={industries} />
-          <Filter id="f-service" label="Services" value={service} onChange={setService} options={services} />
-        </motion.div>
+        {industries.length > 2 && <motion.div {...rise(0.1)} className="mt-10 flex flex-wrap gap-5 sm:gap-6" role="group" aria-label="Filter projects">
+          <Filter id="f-industry" label="Category" value={industry} onChange={setIndustry} options={industries} />
+        </motion.div>}
 
         <p className="sr-only" role="status" aria-live="polite">{list.length} {list.length === 1 ? 'project' : 'projects'} shown</p>
         <ul className="mt-9 flex flex-col gap-6">
@@ -58,7 +55,7 @@ export default function SelectedProjects() {
         {list.length === 0 && (
           <div className="mt-9 rounded-[16px] border border-dashed border-black/20 py-16 text-center">
             <p className="text-[18px] text-[#444]">{sp.empty}</p>
-            <button type="button" onClick={() => { setIndustry('All'); setService('All'); }} className="mt-4 min-h-[44px] text-[15px] font-semibold text-rudrix-strong underline underline-offset-4">Reset filters</button>
+            <button type="button" onClick={() => { setIndustry('All'); }} className="mt-4 min-h-[44px] text-[15px] font-semibold text-rudrix-strong underline underline-offset-4">Reset filters</button>
           </div>
         )}
       </div>

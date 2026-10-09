@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { AnimatePresence, m as motion, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, CircleCheck, TriangleAlert } from 'lucide-react';
 import { customSoftwareCases as master } from '@/data/services';
-import { selectedProjects } from '@/data/work';
+import { conceptCases } from '@/data/work';
 
 const ease = [0.22, 1, 0.36, 1];
-const projects = selectedProjects.projects;
+const projects = conceptCases.projects;
 const N = projects.length;
 const mod = (i) => ((i % N) + N) % N;
 

@@ -1,3 +1,4 @@
+import { clientTestimonials } from './testimonials';
 // Copy for the About Us page and banner. Map pins mark the markets we work in (positions are % of the dotted map).
 export const about = {
   kicker: 'About Rudrix',
@@ -72,24 +73,21 @@ export const standards = {
   ],
 };
 
-// "Clients love" section. PLACEHOLDER content: the three text quotes are the demo quotes already used on the home page and the
-// video card is a stand-in. Replace with verified testimonials (and add `video`, `rating`, `logo`) before launch.
+// "Clients love" section: verified text testimonials from data/testimonials.js.
 export const clients = {
   eyebrow: 'CLIENTS LOVE!!!',
   title: ['Trusted by businesses', 'across the globe'],
   text: "Don't just take our word for it — hear from the teams we've worked with.",
   link: { label: 'Explore Client Stories', href: '/#results' },
-  // Markets Rudrix serves (from the company brief), shown as a ticker; not a list of client locations.
+  // Countries shown in the ticker (UK and Canada removed; Germany, Brazil, Italy, India added).
   markets: [
-    { name: 'United States', flag: '/flags/us.svg' },
-    { name: 'Canada', flag: '/flags/ca.svg' },
-    { name: 'United Kingdom', flag: '/flags/gb.svg' },
     { name: 'Australia', flag: '/flags/au.svg' },
+    { name: 'United States', flag: '/flags/us.svg' },
+    { name: 'Germany', flag: '/flags/de.svg' },
+    { name: 'Brazil', flag: '/flags/br.svg' },
+    { name: 'Italy', flag: '/flags/it.svg' },
+    { name: 'India', flag: '/flags/in.svg' },
   ],
-  testimonials: [
-    { type: 'text', quote: 'Rudrix took our product from a rough idea to a polished platform that our customers actually enjoy using.', name: 'Daniel Carter', role: 'Founder, NovaStack' },
-    { type: 'text', quote: 'They understood the product, challenged the right decisions, and delivered an experience that feels far more mature than we expected.', name: 'Sophia Williams', role: 'Product Director, FlowLabs' },
-    { type: 'video', poster: '/images/results/t2.webp', alt: 'Placeholder poster for a client video testimonial', name: '[Client name]', role: '[Role, Company]', video: null },
-    { type: 'text', quote: 'From design through development, the Rudrix team made the entire process feel clear, collaborative, and surprisingly smooth.', name: 'Michael Anderson', role: 'CEO, ScaleGrid' },
-  ],
+
+  testimonials: clientTestimonials.map((t) => ({ type: 'text', quote: t.review || t.summary, quoted: !!t.review, name: t.name, role: t.role })),
 };

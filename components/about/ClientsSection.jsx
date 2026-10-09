@@ -18,7 +18,7 @@ function TextCard({ t }) {
   return (
     <figure className="flex h-full min-h-[380px] flex-col justify-between border border-black/[0.08] bg-[#fafafa] p-6 sm:min-h-[430px] sm:p-10">
       {t.rating ? <p aria-label={`${t.rating} out of 5 stars`} className="text-[20px] tracking-[2px] text-[#f5b301]">{'★'.repeat(t.rating)}</p> : <span aria-hidden />}
-      <blockquote className="text-[clamp(18px,1.7vw,22px)] leading-[1.65] text-[#1d1d1d]">&ldquo;{t.quote}&rdquo;</blockquote>
+      <blockquote className="text-[clamp(18px,1.7vw,22px)] leading-[1.65] text-[#1d1d1d]">{t.quoted === false ? t.quote : <>&ldquo;{t.quote}&rdquo;</>}</blockquote>
       <figcaption className="flex items-end justify-between gap-4">
         <div>
           <p className="text-[18px] font-medium text-[#111]">{t.name}</p>
