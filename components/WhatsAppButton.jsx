@@ -14,6 +14,7 @@ export default function WhatsAppButton() {
       aria-label={whatsapp.label}
       className="group fixed bottom-[max(20px,env(safe-area-inset-bottom))] right-[max(20px,env(safe-area-inset-right))] z-[60] flex h-[56px] w-[56px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_-6px_rgba(0,0,0,0.35)] transition-[transform,box-shadow,background-color] duration-300 hover:-translate-y-0.5 hover:bg-[#1ebe5b] hover:shadow-[0_14px_30px_-8px_rgba(37,211,102,0.6)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-3 focus-visible:outline-[#128c4a] motion-reduce:transition-none sm:h-[60px] sm:w-[60px]"
     >
+      <span aria-hidden className="wa-pulse pointer-events-none absolute inset-[7px] -z-10 rounded-full bg-[#25D366] motion-reduce:hidden" />
       <span aria-hidden className="pointer-events-none absolute right-[calc(100%+12px)] hidden whitespace-nowrap rounded-[8px] bg-[#111] px-3.5 py-2 text-[14px] font-medium text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 lg:block">
         {whatsapp.hint}
       </span>
