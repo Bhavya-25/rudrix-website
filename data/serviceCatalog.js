@@ -202,7 +202,7 @@ export const extraServices = [
   mk({
     slug: 'digital-marketing', name: 'Digital Marketing', menuLabel: 'Digital Marketing', group: 'Marketing', icon: 'Globe',
     seoTitle: 'Digital Marketing Services for Growing Businesses | Rudrix',
-    description: 'Digital marketing strategy that connects SEO, paid advertising, social media and landing pages around your goals. Talk to Rudrix about a plan that fits your business.',
+    description: 'Digital marketing strategy that connects SEO, paid ads, social media and landing pages around your goals. Talk to Rudrix about a plan.',
     short: 'A joined-up marketing plan across search, paid ads, social and your website, built around your goals.',
     h1: 'Digital Marketing That Moves Your Business Forward',
     intro: 'Build a stronger online presence with a digital marketing strategy designed around your audience, your business goals and the opportunities that are realistic for you.',
@@ -220,7 +220,7 @@ export const extraServices = [
   mk({
     slug: 'seo', name: 'SEO', menuLabel: 'SEO', group: 'Marketing', icon: 'SearchCheck',
     seoTitle: 'SEO Services: Technical, On-Page & Content SEO | Rudrix',
-    description: 'Search engine optimisation built on technical fixes, search-intent research and useful content. Improve your search visibility with a long-term plan from Rudrix.',
+    description: 'SEO built on technical fixes, search-intent research and useful content. Improve your search visibility with a long-term plan from Rudrix.',
     short: 'Technical, on-page and content optimisation that helps the right customers find your website through search.',
     h1: 'SEO Strategies Built for Sustainable Search Visibility',
     intro: "Improve your website's search visibility with technical improvements, useful content and optimisation aligned with what your customers are actually searching for.",
@@ -256,7 +256,7 @@ export const extraServices = [
   mk({
     slug: 'facebook-ads', name: 'Facebook Ads', menuLabel: 'Facebook Ads', group: 'Marketing', icon: 'Shapes',
     seoTitle: 'Facebook Ads Management & Campaign Strategy | Rudrix',
-    description: 'Facebook advertising built around your audience and objectives: targeting, creative, lead and traffic campaigns, tracking and reporting. Plan your campaigns with Rudrix.',
+    description: 'Facebook advertising built around your audience and objectives: targeting, creative, lead and traffic campaigns, tracking and reporting.',
     short: 'Paid Facebook campaigns planned around your audience, objective and measurable results.',
     h1: 'Facebook Ads Designed to Reach the Right Audience',
     intro: 'Plan and optimise Facebook advertising campaigns around your audience, your business objectives and measurable campaign performance.',
@@ -274,7 +274,7 @@ export const extraServices = [
   mk({
     slug: 'social-media-marketing', name: 'Social Media Marketing', menuLabel: 'Social Media', group: 'Marketing', icon: 'Layers',
     seoTitle: 'Social Media Marketing: Strategy & Content Planning | Rudrix',
-    description: 'Social media strategy, platform selection, content planning and reporting that give your brand a consistent, credible presence. Talk to Rudrix about your social media.',
+    description: 'Social media strategy, platform selection, content planning and reporting for a consistent, credible brand presence. Talk to Rudrix.',
     short: 'Organic social strategy and content planning that keeps your brand consistent and your audience engaged.',
     h1: 'Social Media Marketing That Builds Meaningful Connections',
     intro: 'Create a consistent social presence through thoughtful content, clear brand messaging and a strategy aligned with your business goals.',

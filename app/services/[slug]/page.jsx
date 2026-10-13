@@ -5,6 +5,8 @@ import Footer from '@/components/Footer';
 import ServicePageView from '@/components/ServicePageView';
 import JsonLd from '@/components/JsonLd';
 import { services, serviceBySlug } from '@/data/services';
+import { breadcrumb } from '@/lib/schema';
+import { abs } from '@/lib/siteUrl';
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -22,7 +24,8 @@ export default async function ServicePage({ params }) {
   const service = serviceBySlug(slug);
   if (!service) notFound();
   const ld = [
-    { '@context': 'https://schema.org', '@type': 'Service', name: service.name, description: service.description, provider: { '@type': 'Organization', name: 'Rudrix' } },
+    { '@context': 'https://schema.org', '@type': 'Service', name: service.name, description: service.description, url: abs(`/services/${service.slug}`), provider: { '@type': 'Organization', name: 'Rudrix', url: abs('/') } },
+    breadcrumb([{ name: 'Home', path: '/' }, { name: 'Services', path: '/services' }, { name: service.name, path: `/services/${service.slug}` }]),
     { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: service.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
   ];
   return (

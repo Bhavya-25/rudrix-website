@@ -8,7 +8,7 @@ import Cta from '@/components/Cta';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata = pageMeta({
-  title: 'Software Development Services: Custom Software, Web, SaaS & Design | Rudrix',
+  title: 'Software Development Services for Growing Businesses | Rudrix',
   description: 'Custom software, web development, SaaS, UI/UX design, eCommerce, mobile apps, MVPs and ongoing support from one practical team. Explore Rudrix services.',
   alternates: { canonical: '/services' },
 });

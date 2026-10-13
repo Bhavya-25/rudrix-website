@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { inquiry } from '@/data/inquiry';
 import { postJson } from '@/lib/submitForm';
+import { track } from '@/lib/analytics';
 import Cta from '@/components/Cta';
 
 const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
@@ -63,6 +64,7 @@ export default function ProjectForm({ idPrefix = '', compact = false, source = '
       setStatus('error');
       return;
     }
+    track('generate_lead', { form_source: source });
     setStatus('success');
     setV(empty);
   };

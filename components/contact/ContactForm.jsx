@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { contact } from '@/data/contact';
 import { postJson } from '@/lib/submitForm';
+import { track } from '@/lib/analytics';
 import Cta from '@/components/Cta';
 
 const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
@@ -70,6 +71,7 @@ export default function ContactForm() {
       setStatus('error');
       return;
     }
+    track('generate_lead', { form_source: 'contact-page' }); // only after the server confirmed delivery
     setStatus('success');
     setV(empty);
   };

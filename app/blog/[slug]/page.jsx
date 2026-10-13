@@ -4,6 +4,9 @@ import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { blogPosts } from '@/data/blog';
+import JsonLd from '@/components/JsonLd';
+import { breadcrumb } from '@/lib/schema';
+import { abs } from '@/lib/siteUrl';
 
 export function generateStaticParams() {
   return blogPosts.map((p) => ({ slug: p.slug }));
@@ -24,8 +27,13 @@ export default async function BlogPost({ params }) {
   if (!post) notFound();
   const more = blogPosts.filter((x) => x.slug !== slug);
 
+  const ld = [
+    { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.title, description: post.excerpt, datePublished: post.date, image: abs(post.image), mainEntityOfPage: abs(`/blog/${slug}`), author: { '@type': 'Organization', name: 'Rudrix' }, publisher: { '@type': 'Organization', name: 'Rudrix', url: abs('/') } },
+    breadcrumb([{ name: 'Home', path: '/' }, { name: 'Blog', path: '/blog' }, { name: post.title, path: `/blog/${slug}` }]),
+  ];
   return (
     <>
+      <JsonLd data={ld} />
       <main>
         <Header />
         <article className="bg-white section-x pb-16 pt-[170px] md:pb-24 md:pt-[190px]">

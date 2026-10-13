@@ -5,6 +5,7 @@ import { useReducedMotion } from '@/lib/useReducedMotion';
 import { footer } from '@/data/footer';
 import Reveal from './Reveal';
 import { postJson } from '@/lib/submitForm';
+import { track } from '@/lib/analytics';
 import Cta from '@/components/Cta';
 
 const ease = [0.22, 1, 0.36, 1];
@@ -29,6 +30,7 @@ export default function NewsletterFooter() {
       return setState('failed');
     }
     setMessage(res.status === 'subscribed' ? "You're on the list ✓" : res.status === 'duplicate' ? "You're already on our list ✓" : "Thanks, we've received your email ✓");
+    track('newsletter_signup', { form_source: 'footer', result: res.status });
     setState('success');
     setEmail('');
   };
