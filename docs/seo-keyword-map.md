@@ -29,3 +29,19 @@ Service <-> related services (exists), blog post -> its service (add 1-2 natural
 2. Business directories with an accurate name/URL/email (Clutch, GoodFirms, DesignRush: only if you qualify, no fake reviews).
 3. Genuine guest articles and partner mentions; competitor backlink research with a tool you have access to.
 4. No purchased links, no mass submissions, no daily quotas. Record each verified backlink in the monthly report.
+
+## Update 14 Oct 2026: content actions done
+- Priority service pages audited: each has 640-790 words, a keyword-bearing H1, 4 FAQs, process and deliverables; no rewrite needed. Added a "From the blog" list per service.
+- Published (in code, live after deploy) the 4 gap posts: `how-much-does-custom-software-cost`, `what-is-saas-product-development`, `how-long-does-it-take-to-build-an-mvp`, `benefits-of-custom-software-for-growing-businesses`. Each links to its service, has a FAQ section with FAQPage schema and BlogPosting + Breadcrumb schema. Please review them editorially; they contain no prices, statistics or client claims.
+- Industry pages (Healthcare, FinTech, eCommerce, SaaS) and case studies: **deferred**. Needed facts: for each real project (Pocketpills, BrokerPad, TS Trading Academy) the client's permission to be named, the challenge, scope, your role, technology and any documented result. Without them the pages would be thin or fabricated.
+
+## Backlink / profile tracker (identified -> contacted -> published -> verified)
+| Opportunity | Status | Notes |
+|---|---|---|
+| Behance profile link to rudrix.co.in | identified | portfolio kit assets are ready in `portfolio-kit/out/rudrix-website/` |
+| Dribbble profile link | identified | same |
+| Upwork profile website field | identified | only if allowed by Upwork's rules |
+| LinkedIn company page website | identified | create page with accurate details |
+| GitHub organization website | identified | |
+| Clutch / GoodFirms / DesignRush | identified | only if eligible; no fake reviews; may be paid, needs your approval |
+Nothing here is marked published or verified because none has been checked.

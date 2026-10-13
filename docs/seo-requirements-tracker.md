@@ -26,12 +26,12 @@ Statuses: PASS (verified), PARTIAL, BLOCKED (needs your account/credentials), NO
 | SEO-020 | Page titles/descriptions | PASS | 46 pages unique; trimmed | monitor CTR |
 | SEO-021 | H1/heading optimisation | PASS | exactly one H1 per page; homepage H1 kept deliberately | A/B after GSC data |
 | SEO-022 | Image SEO | PARTIAL | alt policy applied; no empty-alt informative images found | rename files only if worth it |
-| SEO-023 | Internal linking | PARTIAL | 0 broken links; services <-> related, footer, menu; blog -> service links limited | add contextual blog->service links |
+| SEO-023 | Internal linking | PASS (local) | 0 broken links; every blog post now has a `service` link (post -> service CTA) and service pages list "From the blog" posts | verify live; keep adding contextual links |
 | SEO-024 | Structured data | PASS (local) | Organization, WebSite, Service, FAQPage, BreadcrumbList, BlogPosting valid JSON | run Rich Results Test on live URLs |
 | SEO-025 | Google Business Profile / local | BLOCKED | no verified address or phone in project | provide real address/service area |
 | SEO-026 | PageSpeed / CWV | NOT VERIFIED | earlier lab runs only | run PageSpeed on production; CrUX needs traffic |
 | SEO-027 | Tech foundation before backlinks | PASS | this task | none |
 | SEO-028 | On-page SEO checklist | PASS | `docs/seo-keyword-map.md` | review quarterly |
-| SEO-029 | Blog and content strategy | PARTIAL | 7 posts exist; calendar in keyword map | write/approve new posts |
+| SEO-029 | Blog and content strategy | PARTIAL | 4 new original posts for the spec's gap topics published (no invented statistics, prices or citations), 11 posts total, FAQ + schema | editorial review by you; more posts per calendar |
 | SEO-030 | Off-page SEO / backlinks | PARTIAL | ethical plan only; no backlinks claimed | execute plan manually |
 | SEO-031 | Workflow + monthly reporting | PASS | `docs/monthly-seo-report-template.md` | connect data once GSC/GA4 exist |

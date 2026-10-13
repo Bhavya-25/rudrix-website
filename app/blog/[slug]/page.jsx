@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { blogPosts } from '@/data/blog';
+import { serviceBySlug } from '@/data/services';
 import JsonLd from '@/components/JsonLd';
 import { breadcrumb } from '@/lib/schema';
 import { abs } from '@/lib/siteUrl';
@@ -25,11 +26,13 @@ export default async function BlogPost({ params }) {
   const { slug } = await params;
   const post = blogPosts.find((x) => x.slug === slug);
   if (!post) notFound();
-  const more = blogPosts.filter((x) => x.slug !== slug);
+  const more = blogPosts.filter((x) => x.slug !== slug).slice(0, 4);
+  const service = post.service ? serviceBySlug(post.service) : null;
 
   const ld = [
     { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.title, description: post.excerpt, datePublished: post.date, image: abs(post.image), mainEntityOfPage: abs(`/blog/${slug}`), author: { '@type': 'Organization', name: 'Rudrix' }, publisher: { '@type': 'Organization', name: 'Rudrix', url: abs('/') } },
     breadcrumb([{ name: 'Home', path: '/' }, { name: 'Blog', path: '/blog' }, { name: post.title, path: `/blog/${slug}` }]),
+    ...(post.faq ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: post.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }] : []),
   ];
   return (
     <>
@@ -46,9 +49,21 @@ export default async function BlogPost({ params }) {
               <img src={post.image} alt="" width={1200} height={675} className="h-full w-full object-cover" />
             </div>
             <div className="mt-10 space-y-6 text-[18px] leading-[1.75] text-[#333]">
-              {post.body.map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
+              {post.body.map((para, i) => (typeof para === 'string' ? <p key={i}>{para}</p> : <h2 key={i} className="pt-4 text-[clamp(24px,2.6vw,32px)] font-semibold leading-[1.2] tracking-[-0.02em] text-ink">{para.h}</h2>))}
+              {post.faq && (
+                <>
+                  <h2 className="pt-4 text-[clamp(24px,2.6vw,32px)] font-semibold leading-[1.2] tracking-[-0.02em] text-ink">Frequently asked questions</h2>
+                  {post.faq.map((f) => (
+                    <div key={f.q}>
+                      <h3 className="text-[19px] font-semibold text-ink">{f.q}</h3>
+                      <p className="mt-2">{f.a}</p>
+                    </div>
+                  ))}
+                </>
+              )}
+              {service && (
+                <p className="rounded-[12px] bg-[#f7f7f5] p-6 text-[17px]">Related service: <Link href={`/services/${service.slug}`} className="font-semibold text-rudrix-strong underline underline-offset-2">{service.name}</Link>. {service.short}</p>
+              )}
             </div>
           </div>
         </article>

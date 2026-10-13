@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { blogPosts } from '@/data/blog';
 import { serviceBySlug } from '@/data/services';
 import { getServiceTemplate } from '@/data/serviceTemplate';
 import CustomSoftwareHero from './service-hero/CustomSoftwareHero';
@@ -24,6 +25,7 @@ import Cta from '@/components/Cta';
 export default function ServicePageView({ service }) {
   const t = getServiceTemplate(service);
   const related = service.related.map(serviceBySlug).filter(Boolean);
+  const posts = blogPosts.filter((b) => b.service === service.slug);
   return (
     <>
       <CustomSoftwareHero data={t.hero} />
@@ -58,6 +60,16 @@ export default function ServicePageView({ service }) {
               ))}
             </ul>
           </div>
+          {posts.length > 0 && (
+            <div className="mt-8 border-t border-white/15 pt-6">
+              <p className="text-[13px] uppercase tracking-[0.08em] text-white/60">From the blog</p>
+              <ul className="mt-3 grid gap-2 md:grid-cols-2">
+                {posts.slice(0, 4).map((b) => (
+                  <li key={b.slug}><Link href={`/blog/${b.slug}`} className="inline-flex min-h-[44px] items-center text-[16px] text-white underline-offset-4 hover:underline">{b.title}</Link></li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
       <OtherServices service={service} />
