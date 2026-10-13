@@ -4,11 +4,11 @@ Statuses: PASS (verified), PARTIAL, BLOCKED (needs your account/credentials), NO
 
 | ID | Requirement (spec item) | Status | Evidence | Remaining action |
 |---|---|---|---|---|
-| SEO-001 | Final domain + HTTPS | PARTIAL | rudrix.co.in connected in Vercel, HTTPS 200; canonical fixed; www + vercel.app redirects added | verify redirects live after deploy |
+| SEO-001 | Final domain + HTTPS | PASS | live: http->https 308, www and vercel.app -> rudrix.co.in 308, canonical on rudrix.co.in (14 Oct 2026) | none |
 | SEO-002 | Technical SEO structure check | PASS | `docs/seo-audit.md` crawl of 46 URLs | none |
 | SEO-003 | Search Console connected | BLOCKED | needs your Google login | steps in final report G |
 | SEO-004 | Domain verification (DNS TXT) | BLOCKED | token comes from Google | add TXT at GoDaddy |
-| SEO-005 | XML sitemap | PASS | `app/sitemap.js`, 46 URLs on canonical host | resubmit after deploy |
+| SEO-005 | XML sitemap | PASS | live 200, 46 URLs on canonical host | submit in Search Console |
 | SEO-006 | robots.txt | PASS | `app/robots.js` (allow all, disallow /api/, sitemap line) | none |
 | SEO-007 | Submit sitemap | BLOCKED | needs Search Console | submit `sitemap.xml` |
 | SEO-008 | URL Inspection / request indexing | BLOCKED | needs Search Console | inspect key URLs |
