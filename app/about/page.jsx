@@ -11,8 +11,8 @@ import FAQSection from '@/components/FAQSection';
 import ProjectInquirySection from '@/components/ProjectInquirySection';
 
 export const metadata = pageMeta({
-  title: 'About Rudrix | A Practical Software Development Team',
-  description: 'Meet Rudrix, a software development agency that designs and builds digital products around real business problems. See how we work and what we believe.',
+  title: 'About Rudrix | Trusted Software & UI/UX Design Agency',
+  description: 'Learn about Rudrix, our values, and how our expert team helps businesses grow with purpose-driven software development and modern digital solutions.',
   alternates: { canonical: '/about' },
 });
 

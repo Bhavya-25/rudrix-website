@@ -13,8 +13,8 @@ import FAQSection from '@/components/FAQSection';
 import ProjectInquirySection from '@/components/ProjectInquirySection';
 
 export const metadata = pageMeta({
-  title: 'Our Process | Rudrix',
-  description: 'From the first conversation to final deployment, every Rudrix project runs on an open, reliable process you can track step by step.',
+  title: 'Our Software Development Process | Rudrix',
+  description: 'From product discovery and MVP development to ongoing improvements. Discover how Rudrix builds software around the way your business actually works.',
   alternates: { canonical: '/our-process' },
 });
 

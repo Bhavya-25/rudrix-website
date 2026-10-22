@@ -109,6 +109,8 @@ export const extraServices = [
   }),
   mk({
     slug: 'wordpress-development', name: 'WordPress Development', menuLabel: 'WordPress', group: 'Web & eCommerce', icon: 'Globe',
+    seoTitle: 'Custom WordPress Development Services | Rudrix',
+    description: 'Secure and scalable WordPress development. We build custom themes, plugins, and easy-to-manage CMS websites designed specifically for growing businesses.',
     short: 'Flexible WordPress sites that your team can actually update.',
     h1: 'WordPress development for sites your team can update with confidence',
     intro: 'We build WordPress websites with clean, custom themes and sensible editing tools, so content stays easy to manage and the site stays fast.',
@@ -201,8 +203,8 @@ export const extraServices = [
   // ---- Marketing services. Copy is descriptive: no guaranteed rankings, leads, revenue or ROAS, and no client results. ----
   mk({
     slug: 'digital-marketing', name: 'Digital Marketing', menuLabel: 'Digital Marketing', group: 'Marketing', icon: 'Globe',
-    seoTitle: 'Digital Marketing Services for Growing Businesses | Rudrix',
-    description: 'Digital marketing strategy that connects SEO, paid ads, social media and landing pages around your goals. Talk to Rudrix about a plan.',
+    seoTitle: 'SEO & Digital Marketing Services | Rudrix',
+    description: 'Grow your online presence, rank higher on search engines, and drive targeted traffic with Rudrix\'s data-driven SEO and digital marketing services.',
     short: 'A joined-up marketing plan across search, paid ads, social and your website, built around your goals.',
     h1: 'Digital Marketing That Moves Your Business Forward',
     intro: 'Build a stronger online presence with a digital marketing strategy designed around your audience, your business goals and the opportunities that are realistic for you.',

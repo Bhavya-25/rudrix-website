@@ -4,8 +4,8 @@ import Footer from '@/components/Footer';
 import ContactPageContent from '@/components/contact/ContactPageContent';
 
 export const metadata = pageMeta({
-  title: "Contact Rudrix | Let's Build Your Digital Product",
-  description: 'Have a software, web, SaaS, eCommerce, or product idea? Talk to Rudrix about building, improving, or scaling your digital product.',
+  title: "Contact Rudrix | Let's Talk About Your Project",
+  description: 'Ready to build or improve your digital product? Contact the Rudrix team today for expert custom software, web development, and design solutions.',
   alternates: { canonical: '/contact' },
 });
 

@@ -12,8 +12,8 @@ import FAQSection from '@/components/FAQSection';
 import ProjectInquirySection from '@/components/ProjectInquirySection';
 
 export const metadata = pageMeta({
-  title: 'Our Work | Rudrix Portfolio',
-  description: 'Digital experiences crafted to solve problems, engage people, and move businesses forward. A look at the products, websites and apps Rudrix designs and builds.',
+  title: 'Our Work & Portfolio | Digital Products by Rudrix',
+  description: 'Explore our recent projects. See how we have helped clients with SaaS platforms, custom CRM systems, high-performance web apps, and eCommerce stores.',
   alternates: { canonical: '/work' },
 });
 
