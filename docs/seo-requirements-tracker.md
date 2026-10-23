@@ -12,8 +12,8 @@ Statuses: PASS (verified), PARTIAL, BLOCKED (needs your account/credentials), NO
 | SEO-006 | robots.txt | PASS | `app/robots.js` (allow all, disallow /api/, sitemap line) | none |
 | SEO-007 | Submit sitemap | BLOCKED | needs Search Console | submit `sitemap.xml` |
 | SEO-008 | URL Inspection / request indexing | BLOCKED | needs Search Console | inspect key URLs |
-| SEO-009 | GA4 property | BLOCKED | needs your account | create property "Rudrix", India, INR |
-| SEO-010 | GA4 web data stream | BLOCKED | Measurement ID needed | create stream for https://rudrix.co.in |
+| SEO-009 | GA4 property | PARTIAL | property exists (Measurement ID supplied by you); not verified in Realtime by me | create property "Rudrix", India, INR |
+| SEO-010 | GA4 web data stream | PARTIAL | ID `G-RNP4KY9BFZ` installed in code | create stream for https://rudrix.co.in |
 | SEO-011 | GA4 integration method | PASS | GTM chosen (spec recommendation); no direct gtag to avoid duplicates | none |
 | SEO-012 | GTM account/container | BLOCKED | needs your account | create container "Rudrix Website" |
 | SEO-013 | GTM installed in Next.js | PARTIAL | component ready, tested locally with a dummy ID (script + dataLayer present, no crash without ID) | set `NEXT_PUBLIC_GTM_ID` in Vercel, redeploy |

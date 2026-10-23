@@ -38,7 +38,7 @@ Homepage title changed to the spec's proposal (59 chars): "Software Development 
 Informative images have alt text; decorative images (backgrounds, flags, icons, ring tiles) use `alt=""` correctly. Blog hero photos are generic stock-style and kept decorative. Existing image filenames were left unchanged to avoid breaking URLs.
 
 ## Analytics
-No GA4/GTM was installed. Added `components/GoogleTagManager.jsx` (env `NEXT_PUBLIC_GTM_ID`, no-op when unset) and a `track()` helper. Events: `cta_click`, `email_click`, `phone_click`, `whatsapp_click`, `generate_lead` (only after the API confirms the email was sent), `newsletter_signup`. No personal data is sent. There is **no cookie-consent banner**; add one before enabling advertising pixels.
+No GA4/GTM was installed. Added `components/Analytics.jsx`: direct GA4 tag (Measurement ID `G-RNP4KY9BFZ`, env `NEXT_PUBLIC_GA_ID`) with one `page_view` per route incl. client-side navigation; if `NEXT_PUBLIC_GTM_ID` is set it loads GTM instead and skips the direct tag (no double counting). `track()` helper sends events to gtag or the dataLayer. Events: `cta_click`, `email_click`, `phone_click`, `whatsapp_click`, `generate_lead` (only after the API confirms the email was sent), `newsletter_signup`. No personal data is sent. There is **no cookie-consent banner**; add one before enabling advertising pixels.
 
 ## Performance (earlier measurements, not repeated in this task)
 Lighthouse mobile (lab, local build): home 77-96 depending on run, privacy page 94-99, CLS 0. No field data (CrUX) exists yet. Real Core Web Vitals will appear in Search Console after traffic. Treat as NOT VERIFIED for production.

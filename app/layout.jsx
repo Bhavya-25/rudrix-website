@@ -3,7 +3,7 @@ import './globals.css';
 import JsonLd from '@/components/JsonLd';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import MotionProvider from '@/components/MotionProvider';
-import GoogleTagManager from '@/components/GoogleTagManager';
+import Analytics from '@/components/Analytics';
 import { SITE_URL } from '@/lib/siteUrl';
 
 const sans = Plus_Jakarta_Sans({
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
         <noscript><style>{'[style*="opacity: 0"]{opacity:1!important;transform:none!important}'}</style></noscript>
         <MotionProvider>{children}</MotionProvider>
         <WhatsAppButton />
-        <GoogleTagManager />
+        <Analytics />
         <JsonLd data={{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Rudrix', url: siteUrl }} />
         <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Organization', name: 'Rudrix', url: siteUrl, email: 'info@rudrix.co.in', description: 'Software development agency building custom software, web applications and digital products.' }} />
       </body>
