@@ -45,3 +45,6 @@ Lighthouse mobile (lab, local build): home 77-96 depending on run, privacy page 
 
 ## Not possible from code (need your Google account)
 Search Console, GA4, GTM account, Google Business Profile. See `docs/final-seo-implementation-report.md` section G.
+
+## Analytics install (27 Oct 2026)
+GTM container `GTM-MWF5TB8Q` is installed (script + noscript right after `<body>`). It already contains a GA4 tag for `G-RNP4KY9BFZ` (verified: a GTM-only page load sends one GA4 `page_view`). The direct gtag snippet from the SEO team is therefore **off by default** (`NEXT_PUBLIC_GA_DIRECT`), because loading both counts every visit twice. Client-side route changes push a `route_change` event to the dataLayer; add a Custom Event trigger `route_change` (or History Change) in GTM to send SPA page views.

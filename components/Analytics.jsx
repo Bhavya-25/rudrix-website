@@ -5,13 +5,13 @@ import { useEffect } from 'react';
 import { track } from '@/lib/analytics';
 
 // IDs are public (they appear in every page's source), so constants as fallbacks are fine.
-// Both are installed as requested by the SEO team: the GTM container (GTM-MWF5TB8Q) AND the direct GA4 tag (G-RNP4KY9BFZ).
-// WARNING: if the GTM container also contains a GA4 tag/config for G-RNP4KY9BFZ, every visit is counted twice. Either keep GA4
-// out of the container, or set NEXT_PUBLIC_GA_DIRECT=false to switch the direct tag off.
+// The SEO team asked for the GTM container (GTM-MWF5TB8Q) AND the direct GA4 tag (G-RNP4KY9BFZ). The published container
+// already contains a Google tag for G-RNP4KY9BFZ, so running the direct tag as well would count every visit twice.
+// Default: GTM only. Set NEXT_PUBLIC_GA_DIRECT=true to also load the direct tag (only if GA4 is removed from the container).
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-RNP4KY9BFZ';
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-MWF5TB8Q';
 const useGtm = /^GTM-[A-Z0-9]+$/.test(GTM_ID || '');
-const useGa = process.env.NEXT_PUBLIC_GA_DIRECT !== 'false' && /^G-[A-Z0-9]+$/.test(GA_ID);
+const useGa = process.env.NEXT_PUBLIC_GA_DIRECT === 'true' && /^G-[A-Z0-9]+$/.test(GA_ID);
 
 /** GTM noscript fallback: rendered by the layout immediately after <body> opens, as Google's install steps require. */
 export function GtmNoScript() {
@@ -28,6 +28,7 @@ export default function Analytics() {
 
   // Direct GA4: the initial config sends no page view (send_page_view:false); we send one per route, including client-side navigations.
   useEffect(() => {
+    if (useGtm && !useGa) { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'route_change', page_path: path, page_location: window.location.href, page_title: document.title }); return; }
     if (!useGa || typeof window.gtag !== 'function') return;
     window.gtag('event', 'page_view', { page_path: path, page_location: window.location.href, page_title: document.title });
   }, [path]);
