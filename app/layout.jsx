@@ -3,7 +3,7 @@ import './globals.css';
 import JsonLd from '@/components/JsonLd';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import MotionProvider from '@/components/MotionProvider';
-import Analytics from '@/components/Analytics';
+import Analytics, { GtmNoScript } from '@/components/Analytics';
 import { SITE_URL } from '@/lib/siteUrl';
 
 const sans = Plus_Jakarta_Sans({
@@ -39,6 +39,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={sans.variable}>
       <body>
+        <GtmNoScript />
         <noscript><style>{'[style*="opacity: 0"]{opacity:1!important;transform:none!important}'}</style></noscript>
         <MotionProvider>{children}</MotionProvider>
         <WhatsAppButton />
