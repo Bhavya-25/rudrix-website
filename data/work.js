@@ -52,9 +52,9 @@ export const recognition = {
   eyebrow: 'TRUSTED & RECOGNIZED.',
   title: ['Find Our Work Across Leading ', 'Design & Freelance Platforms, ', 'Where We Share Thoughtful Design, Reliable Development And Digital Products.'],
   profiles: {
-    dribbble: { url: '', label: 'Design Portfolio', text: 'Selected digital product and UI/UX work.', accent: '#ea4c89', logo: '/platforms/dribbble.svg' },
-    behance: { url: '', label: 'Creative Portfolio', text: 'Selected creative and digital experiences.', accent: '#1769ff', logo: '/platforms/behance.svg' },
-    upwork: { url: '', label: 'Freelance Profile', text: 'Software development, design and eCommerce services.', accent: '#14a800', logo: '/platforms/upwork.svg' },
+    dribbble: { url: 'https://dribbble.com/bhavvyachawla', label: 'Design Portfolio', text: 'Selected digital product and UI/UX work.', accent: '#ea4c89', logo: '/platforms/dribbble.svg' },
+    behance: { url: 'https://www.behance.net/bhavya_chawla', label: 'Creative Portfolio', text: 'Selected creative and digital experiences.', accent: '#1769ff', logo: '/platforms/behance.svg' },
+    upwork: { url: 'https://www.upwork.com/freelancers/~01148682312bc485f3', label: 'Freelance Profile', text: 'Software development, design and eCommerce services.', accent: '#14a800', logo: '/platforms/upwork.svg' },
   },
   // Fan of 7 cards, left → right. `k` links to a profile; plain cards are decorative service tiles.
   fan: [{ k: 'dribbble' }, { k: 'upwork', center: true }, { k: 'behance' },{ k: 'dribbble' }, { k: 'upwork', center: true }, { k: 'behance' }],
